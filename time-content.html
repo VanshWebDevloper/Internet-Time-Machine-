@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet Time Machine</title>
+    <link rel="stylesheet" href="time-style.css">
+</head>
+<body>
+    <header>
+        <div class="top-label">[ INTERNET ARCHIVE TERMINAL ]</div>
+        <h1>Internet Time Machine</h1>
+        <p>This is an interactive time machine that shows you what the internet looked like in different years.</p>
+    </header>
+
+    <section class="year-selector">
+        <h2>Select Year For Time-Travel</h2>
+        <div class="year-buttons">
+            <button type="button" class="year" data-year="1995">1995</button>
+            <button type="button" class="year" data-year="2000">2000</button>
+            <button type="button" class="year" data-year="2005">2005</button>
+            <button type="button" class="year" data-year="2010">2010</button>
+            <button type="button" class="year" data-year="2015">2015</button>
+            <button type="button" class="year" data-year="2020">2020</button>
+            <button type="button" class="year" data-year="2026">2026</button>
+        </div>
+    </section>
+
+    <section class="time-machine">
+        <h2>Traveling To:</h2>
+        <div class="year-display">
+            <span id="displayYear">1995</span>
+        </div>
+
+        <div class="computer-container">
+            <div class="monitor">
+                <div class="monitor-inner">
+                    <div class="screen-container">
+                        <div class="screen" id="screen">
+                            <div class="boot-screen" id="bootScreen">
+                                <div>INTERNET TIME MACHINE</div>
+                                <div>SYSTEM READY</div>
+                                <div class="boot-line">_</div>
+                            </div>
+
+                            <div class="year-content" id="yearContent">
+                                <h1>WELCOME TO 1995</h1>
+                                <div class="website-window">
+                                    <div class="web-title">MY HOMEPAGE</div>
+                                    <p>Welcome to my corner of the Web!</p>
+                                    <p>Best viewed with Netscape Navigator.</p>
+                                    <div class="fake-links">HOME &nbsp; | &nbsp; ABOUT &nbsp; | &nbsp; GUESTBOOK</div>
+                                    <p class="counter">Visitors: 000001</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="monitor-bottom">
+                    <div class="power-switch">
+                        <button type="button" class="button" id="powerButton" aria-label="Power"></button>
+                    </div>
+                    <div class="power-led on" id="powerLed"></div>
+                </div>
+            </div>
+
+            <div class="monitor-base"></div>
+            <div class="monitor-holder-container">
+                <div class="monitor-holder"></div>
+            </div>
+        </div>
+
+        <button type="button" class="back-button" id="backButton">← Back</button>
+    </section>
+
+    <section class="info-section">
+        <h2>About This Era</h2>
+        <div class="info-card">
+            <h3 id="infoTitle">1995 — The Early Web</h3>
+            <p id="infoText">The web was still young. Personal homepages, guestbooks, simple HTML and animated GIFs were common.</p>
+            <div class="info-grid">
+                <div>
+                    <strong>Design</strong>
+                    <span id="designInfo">Simple HTML</span>
+                </div>
+                <div>
+                    <strong>Popular</strong>
+                    <span id="popularInfo">Personal Homepages</span>
+                </div>
+                <div>
+                    <strong>Web Style</strong>
+                    <span id="styleInfo">Web 1.0</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>INTERNET TIME MACHINE</p>
+        <span>Exploring the evolution of the Web</span>
+        <p>@Resk | Mayank Singh Chauhan</p>
+    </footer>
+
+    <script src="time-control.js"></script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 0%, #30365c 0%, #20243a 45%, #151827 100%);
+  color: #f5f5f5;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+header, section, footer {
+  width: min(1000px, 92%);
+  margin: 0 auto;
+}
+
+header {
+  padding: 70px 0 45px;
+}
+
+.top-label {
+  margin-bottom: 18px;
+  color: #7dff5b;
+  font-family: monospace;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+header h1 {
+  margin: 0 0 20px;
+  font-size: clamp(42px, 8vw, 76px);
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+header p {
+  max-width: 700px;
+  margin: 0;
+  color: #bfc4dc;
+  font-size: clamp(17px, 3vw, 21px);
+  line-height: 1.6;
+}
+
+section {
+  margin-bottom: 70px;
+}
+
+section h2 {
+  margin: 0 0 25px;
+  font-size: clamp(28px, 5vw, 42px);
+  letter-spacing: -1px;
+}
+
+.year-selector {
+  padding: 30px;
+  border: 1px solid #ffffff12;
+  border-radius: 20px;
+  background: #ffffff06;
+  box-shadow: 0 20px 50px #0003, inset 0 1px #ffffff08;
+}
+
+.year-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.year {
+  min-width: 100px;
+  padding: 15px 20px;
+  border: 1px solid #ffffff30;
+  border-radius: 10px;
+  background: #292e49;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .2s, background .2s, border-color .2s, box-shadow .2s;
+}
+
+.year:hover {
+  transform: translateY(-4px);
+  background: #343b5d;
+  border-color: #6cff45;
+  box-shadow: 0 8px 20px #0004, 0 0 15px #5cff2225;
+}
+
+.year:active {
+  transform: scale(.96);
+}
+
+.year.active {
+  background: #5cff22;
+  color: #061006;
+  border-color: #b8ff9c;
+  box-shadow: 0 0 15px #5cff2270;
+}
+
+.time-machine {
+  text-align: center;
+}
+
+.time-machine > h2 {
+  font-family: monospace;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.year-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 180px;
+  min-height: 60px;
+  margin: 0 auto 35px;
+  padding: 8px 25px;
+  border: 2px solid #5cff22;
+  border-radius: 8px;
+  background: #071007;
+  color: #b8ff9c;
+  font-family: monospace;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-shadow: 0 0 5px #5cff22, 0 0 15px #5cff22;
+  box-shadow: 0 0 15px #5cff2244, inset 0 0 15px #5cff2215;
+}
+
+.computer-container {
+  width: min(500px, 95vw);
+  margin: 35px auto 20px;
+}
+
+.monitor {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 500 / 450;
+  padding: 8%;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #e0dac8, #c2bba8);
+  box-shadow: 0 30px 50px #0007, inset 2px 2px 5px #ffffff80, inset -5px -5px 15px #0003;
+}
+
+.monitor-inner {
+  width: 100%;
+  height: 72%;
+  padding: 4%;
+  background: #111;
+  border: 12px solid #908e7a;
+  border-top-color: #6e6d5f;
+  border-bottom-color: #d7d4c1;
+  border-radius: 6px;
+  box-shadow: 0 8px 15px #0008;
+}
+
+.screen-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #020402;
+  border: 3px solid #000;
+  box-shadow: inset 10px 10px 25px #000a, inset -10px -10px 25px #000a;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #020402;
+  isolation: isolate;
+  transition: background .4s, color .4s;
+}
+
+.screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, #ffffff09 4px);
+}
+
+.screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 21;
+  pointer-events: none;
+  border-radius: 8px;
+  box-shadow: inset 0 0 30px #78ff6425, inset 0 0 80px #000b;
+}
+
+.boot-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #020402;
+  color: #b8ff9c;
+  font-family: monospace;
+  font-size: 12px;
+  text-shadow: 0 0 5px #5cff22;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+
+.boot-screen.show {
+  opacity: 1;
+}
+
+.boot-line {
+  animation: blink .7s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.year-content {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  padding: 18px;
+  overflow: hidden;
+  color: #b8ff9c;
+  font-family: monospace;
+  transition: background .4s, color .4s;
+}
+
+.year-content h1 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.website-window {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid currentColor;
+  text-align: left;
+}
+
+.web-title {
+  margin-bottom: 12px;
+  padding: 7px;
+  background: currentColor;
+  color: #020402;
+  font-weight: bold;
+}
+
+.website-window p {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.fake-links {
+  margin: 12px 0;
+  font-size: 9px;
+  text-decoration: underline;
+}
+
+.counter {
+  opacity: .8;
+}
+
+.monitor-bottom {
+  position: absolute;
+  right: 10%;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.power-switch {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #908e7a, #d7d4c1);
+}
+
+.power-switch .button {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #555;
+  border-radius: 50%;
+  background: #ccc5b3;
+  cursor: pointer;
+}
+
+.power-led {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #333;
+}
+
+.power-led.on {
+  background: #5cff22;
+  box-shadow: 0 0 5px #5cff22, 0 0 12px #5cff2266;
+}
+
+.monitor-base {
+  width: 60%;
+  height: 45px;
+  margin: -2px auto 0;
+  background: linear-gradient(to bottom, #d3ccbc, #908e7a);
+  border-radius: 0 0 5px 5px;
+  box-shadow: inset 0 5px 10px #0005;
+}
+
+.monitor-holder-container {
+  width: 45%;
+  height: 45px;
+  margin: 0 auto;
+}
+
+.monitor-holder {
+  width: 100%;
+  height: 35px;
+  background: linear-gradient(to bottom, #6e6d5f, #908e7a);
+  border-radius: 50%;
+}
+
+.back-button {
+  margin-top: 10px;
+  padding: 11px 22px;
+  border: 1px solid #ffffff25;
+  border-radius: 8px;
+  background: #292e49;
+  color: white;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.back-button:hover {
+  background: #3b4265;
+  transform: translateY(-2px);
+}
+
+.info-section {
+  padding: 30px;
+  border-top: 1px solid #ffffff12;
+}
+
+.info-card {
+  padding: 25px;
+  border-radius: 15px;
+  background: #ffffff06;
+  border: 1px solid #ffffff10;
+}
+
+.info-card h3 {
+  margin-top: 0;
+  color: #7dff5b;
+  font-family: monospace;
+}
+
+.info-card p {
+  color: #bfc4dc;
+  line-height: 1.6;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.info-grid div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid #ffffff12;
+  border-radius: 10px;
+  background: #ffffff05;
+}
+
+.info-grid strong {
+  color: #7dff5b;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.info-grid span {
+  color: #bfc4dc;
+  font-size: 14px;
+}
+
+footer {
+  padding: 30px 0 50px;
+  text-align: center;
+  color: #737991;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+footer p {
+  margin: 0 0 8px;
+  color: #7dff5b;
+}
+
+/* Year-specific themes */
+body.year-1995 .screen { background: #020402; }
+body.year-1995 .year-content { color: #b8ff9c; }
+body.year-1995 .website-window { border-style: dashed; }
+
+body.year-2000 .screen { background: #001f4d; }
+body.year-2000 .year-content { color: white; font-family: Arial, sans-serif; }
+body.year-2000 .website-window { border: 3px solid #ffcc00; background: #003b82; }
+body.year-2000 .web-title { background: #ffcc00; color: #003b82; }
+
+body.year-2005 .screen { background: linear-gradient(135deg, #d8eaff, #ffffff); }
+body.year-2005 .year-content { color: #245a9c; font-family: Arial, sans-serif; }
+body.year-2005 .website-window { border: 1px solid #9cbce0; border-radius: 8px; background: white; box-shadow: 0 5px 15px #7777; }
+body.year-2005 .web-title { border-radius: 5px; background: linear-gradient(#7dc5ff, #2f80c7); color: white; }
+
+body.year-2010 .screen { background: linear-gradient(135deg, #ececec, #ffffff); }
+body.year-2010 .year-content { color: #333; font-family: Arial, sans-serif; }
+body.year-2010 .website-window { border: none; background: white; box-shadow: 0 4px 15px #0003; }
+body.year-2010 .web-title { background: #3b5998; color: white; }
+
+body.year-2015 .screen { background: #fafafa; }
+body.year-2015 .year-content { color: #333; font-family: Arial, sans-serif; }
+body.year-2015 .website-window { border: none; border-radius: 3px; background: white; box-shadow: 0 3px 12px #0002; }
+body.year-2015 .web-title { background: #607d8b; color: white; }
+
+body.year-2020 .screen { background: #f5f6fa; }
+body.year-2020 .year-content { color: #222; font-family: Arial, sans-serif; }
+body.year-2020 .website-window { border: none; border-radius: 12px; background: white; box-shadow: 0 6px 20px #0002; }
+body.year-2020 .web-title { background: #222; color: white; border-radius: 8px; }
+
+body.year-2026 .screen { background: radial-gradient(circle at 30% 20%, #18264a, #050711); }
+body.year-2026 .year-content { color: #e8eeff; font-family: Arial, sans-serif; }
+body.year-2026 .website-window { border: 1px solid #ffffff25; border-radius: 16px; background: #ffffff0d; backdrop-filter: blur(8px); }
+body.year-2026 .web-title { background: linear-gradient(90deg, #7d5cff, #35cfff); color: white; border-radius: 10px; }
+
+body.power-off .screen { background: #000; }
+body.power-off .year-content { opacity: 0; }
+body.power-off .power-led { background: #333; box-shadow: none; }
+
+@media (max-width: 600px) {
+  header { padding-top: 45px; }
+  header h1 { letter-spacing: -2px; }
+  .year-selector, .info-section { padding: 22px; }
+  .year { min-width: 105px; }
+  .monitor-inner { border-width: 8px; }
+  .year-content { padding: 10px; }
+  .year-content h1 { font-size: 16px; }
+  .info-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 380px) {
+  header h1 { font-size: 34px; }
+  .year { min-width: 90px; padding: 12px 14px; }
+  .monitor-inner { border-width: 6px; }
+  .year-content h1 { font-size: 13px; }
+}
