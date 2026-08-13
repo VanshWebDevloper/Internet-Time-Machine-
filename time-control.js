@@ -122,10 +122,11 @@ function updateDisplay(year) {
     <div class="website-window">
       <div class="web-title">${data.siteTitle}</div>
       <p>${data.content}</p>
-      <div class="fake-links">${data.navigation}</div>
+      <div class="links" id="crtNavigation">${data.navigation}</div>
       <p class="counter">${data.visitors}</p>
     </div>
   `;
+  const crtNavigation = document.getElementById("crtNavigation");
 
   // Update info panel
   infoSection.title.textContent = data.infoTitle;
@@ -190,3 +191,4 @@ powerButton.addEventListener('click', togglePower);
 
 // Initialize
 updateDisplay(1995);
+
