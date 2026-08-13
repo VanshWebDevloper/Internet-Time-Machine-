@@ -1,58 +1,83 @@
-# Internet Time Machine
+🌐 Internet Time Machine
 
-An interactive website that lets you travel through different years of the internet and see how web design has evolved over time.
+Hey ! I have made an interactive website that shows you how the internet changed over time. It'll give y'all nostalgia :)
 
-## What is this?
+🚀 About the Project
 
-This is a simple web project where you can click different years (1995-2026) and see what websites looked like in each era. It's a fun way to explore internet history through actual design styles and aesthetics.
+Internet Time Machine is a begginer friendly project made with:
 
-## How it works
+- HTML
+- CSS
+- JavaScript
 
-The site simulates an old CRT monitor where you can:
-- Click year buttons to jump to different time periods
-- See how web design changed from simple HTML pages to modern interactive websites
-- Check out information about what made each era unique
+The idea is simple: choose a year and travel back to that era to see what was changes from then to now !
 
-## Technologies used
+Currently, the project includes years from 1995 to 2016
 
-Just vanilla HTML, CSS, and JavaScript. No frameworks, no dependencies.
+Features :
 
-## Features
+-  Select different years
+- Internet history/time-travel concept
+-  Dedicated screen for displaying year content
+-  Year-based trends and information
+- Interactive JavaScript year selection
+-  Responsive HTML structure
 
-- Interactive year selection with visual feedback
-- Retro monitor aesthetic (mimics 90s computer displays)
-- Power button that turns the monitor on/off with boot animation
-- Year-specific color schemes and design styles
-- Info panel explaining web trends for each era
-- Responsive layout that works on mobile
+️ Available Years
 
-## Years included
+The current version includes:
 
-1995 | 2000 | 2005 | 2010 | 2015 | 2020 | 2026
+"1995" · "2000" · "2005" · "2010" · "2015" · "2020" · "2026"
 
-## Project structure
+🧠 How It Works
 
-```
-Time Machine/
+When a year button is clicked, JavaScript reads the year from its "data-year" attribute and updates the year display on the page.
+
+Example:
+
+<button class="year" data-year="1995">1995</button>
+
+The JavaScript then displays the selected year in the "Traveling To" section.
+
+Project Structure
+
+Internet-Time-Machine/
+│
 ├── time-content.html
-├── time-control.js
 ├── time-style.css
+├── time-control.js
 └── README.md
-```
 
-## Future ideas
+🎯 Goal
 
-- Add more detailed historical facts for each year
-- Create variations of popular websites from each era
-- Add sound effects (startup beeps, dial-up sounds)
-- Add transitions between year changes
-- Include more years and eras
-- Improve mobile experience further
+The goal of this project is to make learning about the history of the internet interactive instead of just reading a timeline.
 
-## Author
+Each year can eventually have its own:
 
-Made by [@Resk](https://github.com/resk) - Mayank Singh Chauhan
+- Website designs
+- Popular platforms
+- Internet trends
+- Games
+- Technologies
+- Visual style
+- Important events
+
+ Future Improvements
+
+- [ ] Add unique content for every year
+- [ ] Create different visual styles for different eras
+- [ ] Add animations and transitions
+- [ ] Add a timeline
+- [ ] Add historical websites and technologies
+- [ ] Add sound effects
+- [ ] Add a "Back" button functionality
+- [ ] Improve mobile responsiveness
+- [ ] Add more years
+
+ Author
+@Resk | Mayank Singh Chauhan
+Made with ❤️ while learning HTML, CSS & JavaScript.
 
 ---
 
-If you find this interesting, feel free to fork it or suggest improvements!
+⭐ If you like the idea, consider giving the project a vote to help me get 20x multiplier for  a laptop for better coding !
