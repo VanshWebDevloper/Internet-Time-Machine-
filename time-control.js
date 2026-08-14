@@ -1,5 +1,5 @@
 // Internet Time Machine - Main Controller
-// Manages year navigation and theme switching
+// just managing the year jumps, themes, and all those fake links we'll never follow
 
 const yearButtons = document.querySelectorAll('.year');
 const displayYear = document.getElementById('displayYear');
@@ -9,6 +9,7 @@ const backButton = document.getElementById('backButton');
 const powerButton = document.getElementById('powerButton');
 const powerLed = document.getElementById('powerLed');
 
+// info panel elements
 const infoSection = {
   title: document.getElementById('infoTitle'),
   text: document.getElementById('infoText'),
@@ -20,13 +21,17 @@ const infoSection = {
 let currentYear = 1995;
 let isOn = true;
 
-// Year-specific content and styling
+// year data - each era of the web gets its own personality
 const yearData = {
   1995: {
     title: 'WELCOME TO 1995',
     siteTitle: 'MY HOMEPAGE',
     content: 'Welcome to my corner of the Web! Best viewed with Netscape Navigator.',
-    navigation: 'HOME | ABOUT | GUESTBOOK',
+    navigation: [
+      { name: 'HOME', page: 'home' },
+      { name: 'ABOUT', page: 'about' },
+      { name: 'GUESTBOOK', page: 'guestbook' }
+    ],
     visitors: 'Visitors: 000001',
     infoTitle: '1995 — The Early Web',
     description: 'The web was still young. Personal homepages, guestbooks, simple HTML and animated GIFs were common.',
@@ -34,11 +39,17 @@ const yearData = {
     popular: 'Personal Homepages',
     era: 'Web 1.0'
   },
+
   2000: {
     title: 'WELCOME TO THE WEB',
     siteTitle: 'INTERNET PORTAL',
     content: 'Search the Web. Read news. Check your email.',
-    navigation: 'HOME | SEARCH | NEWS | EMAIL',
+    navigation: [
+      { name: 'HOME', page: 'home' },
+      { name: 'SEARCH', page: 'search' },
+      { name: 'NEWS', page: 'news' },
+      { name: 'EMAIL', page: 'email' }
+    ],
     visitors: 'Visitors: 004281',
     infoTitle: '2000 — Portal Era',
     description: 'Web portals, search engines, email services and flashy graphics were becoming major parts of the Web.',
@@ -46,11 +57,17 @@ const yearData = {
     popular: 'Web Portals',
     era: 'Web 1.0'
   },
+
   2005: {
     title: 'WELCOME TO WEB 2.0',
     siteTitle: 'MY SOCIAL SPACE',
     content: 'Create. Share. Comment. Connect.',
-    navigation: 'HOME | BLOG | PHOTOS | FRIENDS',
+    navigation: [
+      { name: 'HOME', page: 'home' },
+      { name: 'BLOG', page: 'blog' },
+      { name: 'PHOTOS', page: 'photos' },
+      { name: 'FRIENDS', page: 'friends' }
+    ],
     visitors: 'Online Users: 128',
     infoTitle: '2005 — Web 2.0',
     description: 'Websites became more interactive. Blogs, social networks, video sharing and user-generated content exploded.',
@@ -58,11 +75,17 @@ const yearData = {
     popular: 'Blogs & Social Media',
     era: 'Web 2.0'
   },
+
   2010: {
     title: 'WELCOME BACK',
     siteTitle: 'SOCIAL NETWORK',
     content: 'Connect with friends. Share photos and updates.',
-    navigation: 'HOME | PROFILE | PHOTOS | MESSAGES',
+    navigation: [
+      { name: 'HOME', page: 'home' },
+      { name: 'PROFILE', page: 'profile' },
+      { name: 'PHOTOS', page: 'photos' },
+      { name: 'MESSAGES', page: 'messages' }
+    ],
     visitors: 'Friends Online: 37',
     infoTitle: '2010 — Social Web',
     description: 'Social networks dominated online activity. Websites became more polished, interactive and increasingly focused on sharing.',
@@ -70,11 +93,17 @@ const yearData = {
     popular: 'Social Networks',
     era: 'Social Web'
   },
+
   2015: {
     title: 'WELCOME',
     siteTitle: 'MODERN WEBSITE',
     content: 'Clean design. Simple navigation. Responsive layouts.',
-    navigation: 'HOME | SERVICES | WORK | CONTACT',
+    navigation: [
+      { name: 'HOME', page: 'home' },
+      { name: 'SERVICES', page: 'services' },
+      { name: 'WORK', page: 'work' },
+      { name: 'CONTACT', page: 'contact' }
+    ],
     visitors: 'Loading experience...',
     infoTitle: '2015 — Responsive Web',
     description: 'Responsive design became standard. Websites increasingly focused on clean layouts, mobile devices and better user experiences.',
@@ -82,11 +111,17 @@ const yearData = {
     popular: 'Mobile Web',
     era: 'Responsive Web'
   },
+
   2020: {
     title: 'HELLO, INTERNET',
     siteTitle: 'DIGITAL EXPERIENCE',
     content: 'Apps, platforms, streaming, cloud services and social media.',
-    navigation: 'HOME | EXPLORE | CREATE | PROFILE',
+    navigation: [
+      { name: 'HOME', page: 'home' },
+      { name: 'EXPLORE', page: 'explore' },
+      { name: 'CREATE', page: 'create' },
+      { name: 'PROFILE', page: 'profile' }
+    ],
     visitors: 'Users Online: 2.4M',
     infoTitle: '2020 — Platform Era',
     description: 'The web had become deeply integrated into everyday life through streaming, cloud platforms, social networks and web apps.',
@@ -94,11 +129,17 @@ const yearData = {
     popular: 'Web Apps',
     era: 'Modern Web'
   },
+
   2026: {
     title: 'THE WEB, 2026',
     siteTitle: 'DIGITAL SPACE',
     content: 'AI. 3D interfaces. Real-time apps. Interactive experiences.',
-    navigation: 'HOME | AI | PROJECTS | EXPLORE',
+    navigation: [
+      { name: 'HOME', page: 'home' },
+      { name: 'AI', page: 'ai' },
+      { name: 'PROJECTS', page: 'projects' },
+      { name: 'EXPLORE', page: 'explore' }
+    ],
     visitors: 'Systems Online: 100%',
     infoTitle: '2026 — Interactive Web',
     description: 'Modern websites increasingly combine AI, real-time experiences, advanced animation, 3D graphics and highly interactive interfaces.',
@@ -108,7 +149,32 @@ const yearData = {
   }
 };
 
-function updateDisplay(year) {
+// fake 404 page when users try clicking on those fake links
+function show404Error(linkName) {
+  yearContent.innerHTML = `
+    <div class="website-window error-page">
+      <div class="web-title">
+        INTERNET TIME MACHINE
+      </div>
+      <h1>404</h1>
+      <h2>PAGE NOT FOUND</h2>
+      <p>ERROR: The requested page could not be found.</p>
+      <p>Requested link: <strong>${linkName}</strong></p>
+      <hr>
+      <a href="#" class="fake-back" id="returnHome">
+        ← RETURN TO HOMEPAGE
+      </a>
+    </div>
+  `;
+
+  document.getElementById('returnHome').addEventListener('click', (e) => {
+    e.preventDefault();
+    loadYear(currentYear);
+  });
+}
+
+// actually render the year and update everything
+function loadYear(year) {
   const data = yearData[year];
   if (!data) return;
 
@@ -116,79 +182,102 @@ function updateDisplay(year) {
   document.body.className = `year-${year}`;
   displayYear.textContent = year;
 
-  // Render the website preview
+  // build the website preview
   yearContent.innerHTML = `
     <h1>${data.title}</h1>
     <div class="website-window">
       <div class="web-title">${data.siteTitle}</div>
       <p>${data.content}</p>
-      <div class="links" id="crtNavigation">${data.navigation}</div>
+      <div class="links" id="crtNavigation"></div>
       <p class="counter">${data.visitors}</p>
     </div>
   `;
-  const crtNavigation = document.getElementById("crtNavigation");
 
-  // Update info panel
+  // add the clickable nav links
+  const navContainer = document.getElementById('crtNavigation');
+  data.navigation.forEach((link, i) => {
+    const linkEl = document.createElement('a');
+    linkEl.href = '#';
+    linkEl.textContent = link.name;
+    linkEl.className = 'fake-link';
+    linkEl.addEventListener('click', (e) => {
+      e.preventDefault();
+      show404Error(link.name);
+    });
+
+    navContainer.appendChild(linkEl);
+
+    // add separator pipes between links
+    if (i < data.navigation.length - 1) {
+      navContainer.appendChild(document.createTextNode(' | '));
+    }
+  });
+
+  // update the info panel on the right
   infoSection.title.textContent = data.infoTitle;
   infoSection.text.textContent = data.description;
   infoSection.design.textContent = data.designType;
   infoSection.popular.textContent = data.popular;
   infoSection.style.textContent = data.era;
 
-  animateBoot();
-  highlightButton(year);
+  // fancy boot animation
+  triggerBoot();
+  markActiveButton(year);
 }
 
-function animateBoot() {
+// little CRT boot effect when switching years
+function triggerBoot() {
   bootScreen.classList.add('show');
   yearContent.style.opacity = '0';
-  
+
   setTimeout(() => {
     bootScreen.classList.remove('show');
     yearContent.style.opacity = '1';
   }, 700);
 }
 
-function highlightButton(year) {
+// highlight the active year button
+function markActiveButton(year) {
   yearButtons.forEach(btn => {
-    btn.classList.toggle('active', parseInt(btn.dataset.year) === parseInt(year));
+    btn.classList.toggle('active', parseInt(btn.dataset.year) === year);
   });
 }
 
+// go back one year
 function goBack() {
-  const years = Object.keys(yearData).map(Number);
-  const currentIndex = years.indexOf(currentYear);
-  
-  if (currentIndex <= 0) {
-    updateDisplay(1995);
+  const allYears = Object.keys(yearData).map(Number);
+  const idx = allYears.indexOf(currentYear);
+
+  if (idx <= 0) {
+    loadYear(1995);
   } else {
-    updateDisplay(years[currentIndex - 1]);
+    loadYear(allYears[idx - 1]);
   }
 }
 
+// turn the machine on/off
 function togglePower() {
   isOn = !isOn;
-  
+
   if (isOn) {
     document.body.classList.remove('power-off');
     powerLed.classList.add('on');
-    animateBoot();
+    triggerBoot();
   } else {
     document.body.classList.add('power-off');
     powerLed.classList.remove('on');
   }
 }
 
-// Event listeners
-yearButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    updateDisplay(parseInt(button.dataset.year));
+// set up all the event listeners
+yearButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    loadYear(parseInt(btn.dataset.year));
   });
 });
 
 backButton.addEventListener('click', goBack);
 powerButton.addEventListener('click', togglePower);
 
-// Initialize
-updateDisplay(1995);
-
+// kick it off with 1995
+loadYear(1995);

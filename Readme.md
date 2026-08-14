@@ -81,3 +81,8 @@ Made with ❤️ while learning HTML, CSS & JavaScript.
 ---
 
 ⭐ If you like the idea, consider giving the project a vote to help me get 20x multiplier for  a laptop for better coding !
+
+--Updates--
+-Scrollable Crt screen for better interaction.
+
+-Interactive clickable links.
