@@ -91,3 +91,4 @@ Made with ❤️ while learning HTML, CSS & JavaScript.
 AI Usage -
 I use ai for ideas, designs and stucturing website work for my ease and it help me learn to code for my projects.
 Ai help in coding is limited, mostly work is mine and 5-10% is coded by ai.
+I have also used ai to create my Readme.md for structured message layout.
