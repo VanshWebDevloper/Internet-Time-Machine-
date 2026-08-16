@@ -1,6 +1,7 @@
 // Internet Time Machine - Main Controller
-// just managing the year jumps, themes, and all those fake links we'll never follow
+// Controls year navigation, theme changes, and interactive elements
 
+// Get references to all the HTML elements we need to control
 const yearButtons = document.querySelectorAll('.year');
 const displayYear = document.getElementById('displayYear');
 const yearContent = document.getElementById('yearContent');
@@ -9,7 +10,7 @@ const backButton = document.getElementById('backButton');
 const powerButton = document.getElementById('powerButton');
 const powerLed = document.getElementById('powerLed');
 
-// info panel elements
+// Info panel elements (right side of the page)
 const infoSection = {
   title: document.getElementById('infoTitle'),
   text: document.getElementById('infoText'),
@@ -18,10 +19,11 @@ const infoSection = {
   style: document.getElementById('styleInfo')
 };
 
+// Track the current state
 let currentYear = 1995;
 let isOn = true;
 
-// year data - each era of the web gets its own personality
+// All the content for each year of the internet
 const yearData = {
   1995: {
     title: 'WELCOME TO 1995',
@@ -149,16 +151,16 @@ const yearData = {
   }
 };
 
-// fake 404 page when users try clicking on those fake links
+// Show a 404 error page when users click on fake links
 function show404Error(linkName) {
   yearContent.innerHTML = `
     <div class="website-window error-page">
       <div class="web-title">
         INTERNET TIME MACHINE
       </div>
-      <h1>404</h1>
-      <h2>PAGE NOT FOUND</h2>
-      <p>ERROR: The requested page could not be found.</p>
+      <h1>Under Development!</h1>
+      <h2>${linkName} PAGE</h2>
+      <p>Content will be added here soon.</p>
       <p>Requested link: <strong>${linkName}</strong></p>
       <hr>
       <a href="#" class="fake-back" id="returnHome">
@@ -167,22 +169,29 @@ function show404Error(linkName) {
     </div>
   `;
 
-  document.getElementById('returnHome').addEventListener('click', (e) => {
-    e.preventDefault();
+  // Go back to homepage when user clicks the return link
+  document.getElementById('returnHome').addEventListener('click', (event) => {
+    event.preventDefault();
     loadYear(currentYear);
   });
 }
 
-// actually render the year and update everything
+// Load and display the content for a specific year
 function loadYear(year) {
   const data = yearData[year];
+  
+  // Make sure the year exists in our data
   if (!data) return;
 
   currentYear = year;
+  
+  // Change the page theme based on the year
   document.body.className = `year-${year}`;
+  
+  // Update the year display at the top
   displayYear.textContent = year;
 
-  // build the website preview
+  // Build the website preview HTML
   yearContent.innerHTML = `
     <h1>${data.title}</h1>
     <div class="website-window">
@@ -193,40 +202,45 @@ function loadYear(year) {
     </div>
   `;
 
-  // add the clickable nav links
+  // Add the clickable navigation links
   const navContainer = document.getElementById('crtNavigation');
-  data.navigation.forEach((link, i) => {
-    const linkEl = document.createElement('a');
-    linkEl.href = '#';
-    linkEl.textContent = link.name;
-    linkEl.className = 'fake-link';
-    linkEl.addEventListener('click', (e) => {
-      e.preventDefault();
+  data.navigation.forEach((link, index) => {
+    // Create a link element
+    const linkElement = document.createElement('a');
+    linkElement.href = '#';
+    linkElement.textContent = link.name;
+    linkElement.className = 'fake-link';
+    
+    // When clicked, show the 404 error page
+    linkElement.addEventListener('click', (event) => {
+      event.preventDefault();
       show404Error(link.name);
     });
 
-    navContainer.appendChild(linkEl);
+    navContainer.appendChild(linkElement);
 
-    // add separator pipes between links
-    if (i < data.navigation.length - 1) {
+    // Add a pipe separator between links (but not after the last one)
+    if (index < data.navigation.length - 1) {
       navContainer.appendChild(document.createTextNode(' | '));
     }
   });
 
-  // update the info panel on the right
+  // Update the info panel with year details
   infoSection.title.textContent = data.infoTitle;
   infoSection.text.textContent = data.description;
   infoSection.design.textContent = data.designType;
   infoSection.popular.textContent = data.popular;
   infoSection.style.textContent = data.era;
 
-  // fancy boot animation
-  triggerBoot();
+  // Play the boot animation
+  playBootAnimation();
+  
+  // Highlight the active year button
   markActiveButton(year);
 }
 
-// little CRT boot effect when switching years
-function triggerBoot() {
+// Play the CRT boot animation when switching years
+function playBootAnimation() {
   bootScreen.classList.add('show');
   yearContent.style.opacity = '0';
 
@@ -236,48 +250,56 @@ function triggerBoot() {
   }, 700);
 }
 
-// highlight the active year button
+// Highlight which year button is currently active
 function markActiveButton(year) {
-  yearButtons.forEach(btn => {
-    btn.classList.toggle('active', parseInt(btn.dataset.year) === year);
+  yearButtons.forEach(button => {
+    const buttonYear = parseInt(button.dataset.year);
+    button.classList.toggle('active', buttonYear === year);
   });
 }
 
-// go back one year
+// Go back one year in time
 function goBack() {
+  // Get all the years we have data for
   const allYears = Object.keys(yearData).map(Number);
-  const idx = allYears.indexOf(currentYear);
+  
+  // Find where we are in the list
+  const currentIndex = allYears.indexOf(currentYear);
 
-  if (idx <= 0) {
+  // If we're at the first year, go to 1995. Otherwise go back one year
+  if (currentIndex <= 0) {
     loadYear(1995);
   } else {
-    loadYear(allYears[idx - 1]);
+    loadYear(allYears[currentIndex - 1]);
   }
 }
 
-// turn the machine on/off
+// Turn the machine on or off
 function togglePower() {
   isOn = !isOn;
 
   if (isOn) {
+    // Power is ON
     document.body.classList.remove('power-off');
     powerLed.classList.add('on');
-    triggerBoot();
+    playBootAnimation();
   } else {
+    // Power is OFF
     document.body.classList.add('power-off');
     powerLed.classList.remove('on');
   }
 }
 
-// set up all the event listeners
-yearButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    loadYear(parseInt(btn.dataset.year));
+// Set up all the click handlers
+yearButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const year = parseInt(button.dataset.year);
+    loadYear(year);
   });
 });
 
 backButton.addEventListener('click', goBack);
 powerButton.addEventListener('click', togglePower);
 
-// kick it off with 1995
+// Start with 1995 when the page loads
 loadYear(1995);
