@@ -3,63 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internet Time Machine</title>
+    <meta name="description" content="Internet Time Machine — explore how the web evolved from 1995 to 2026 through interactive screens and authentic year-by-year designs.">
+    <meta name="theme-color" content="#10121e">
+    
+    <title>Internet Time Machine - Web Evolution 1995-2026</title>
+    
     <link rel="stylesheet" href="time-style.css">
 </head>
-<body>
+
+<body class="year-2026">
+
+    <!-- ===== HEADER ===== -->
     <header>
         <div class="top-label">[ INTERNET ARCHIVE TERMINAL ]</div>
         <h1>Internet Time Machine</h1>
-        <p>This is an interactive time machine that shows you what the internet looked like in different years.</p>
+        <p>Travel through decades of web design. See how the internet looked in 1995, 2000, 2005, and beyond. A journey through digital history.</p>
     </header>
 
+    <!-- ===== YEAR SELECTOR ===== -->
     <section class="year-selector">
-        <h2>Select Year For Time-Travel</h2>
-        <div class="year-buttons">
-            <button type="button" class="year" data-year="1995">1995</button>
-            <button type="button" class="year" data-year="2000">2000</button>
-            <button type="button" class="year" data-year="2005">2005</button>
-            <button type="button" class="year" data-year="2010">2010</button>
-            <button type="button" class="year" data-year="2015">2015</button>
-            <button type="button" class="year" data-year="2020">2020</button>
-            <button type="button" class="year" data-year="2026">2026</button>
+        <div class="selector-heading">
+            <div>
+                <span class="section-kicker">TIME CONTROL</span>
+                <h2>Select Year For Time-Travel</h2>
+            </div>
+            <span class="range-label">1995 — 2026</span>
+        </div>
+
+        <div class="time-counter">
+            <!-- PREVIOUS YEAR BUTTON -->
+            <button class="time-arrow" id="prevYear" type="button" aria-label="Go to previous year">
+                <span>↑</span>
+                <small>PAST</small>
+            </button>
+
+            <!-- YEAR WHEEL -->
+            <div class="year-wheel" id="yearWheel">
+                <div class="wheel-decoration wheel-decoration-left"></div>
+                <div class="wheel-decoration wheel-decoration-right"></div>
+                <div class="wheel-window">
+                    <div class="digit-wheel" id="digitWheel">
+                        <div class="digit"><span>2</span></div>
+                        <div class="digit"><span>0</span></div>
+                        <div class="digit"><span>2</span></div>
+                        <div class="digit"><span>6</span></div>
+                    </div>
+                    <div class="wheel-line"></div>
+                </div>
+            </div>
+
+            <!-- NEXT YEAR BUTTON -->
+            <button class="time-arrow" id="nextYear" type="button" aria-label="Go to next year">
+                <span>↓</span>
+                <small>FUTURE</small>
+            </button>
+        </div>
+
+        <div class="time-hint">
+            <span>↑</span> Move backward <i>•</i> Move forward <span>↓</span>
         </div>
     </section>
 
+    <!-- ===== TIME MACHINE / MONITOR ===== -->
     <section class="time-machine">
-        <h2>Traveling To:</h2>
-        <div class="year-display">
-            <span id="displayYear">1995</span>
+        <div class="travel-heading">
+            <span>CURRENT DESTINATION</span>
+            <h2>Traveling To:</h2>
         </div>
 
+        <div class="year-display">
+            <span id="displayYear">2026</span>
+        </div>
+
+        <!-- MONITOR CONTAINER -->
         <div class="computer-container">
             <div class="monitor">
                 <div class="monitor-inner">
                     <div class="screen-container">
                         <div class="screen" id="screen">
+                            <!-- BOOT SCREEN -->
                             <div class="boot-screen" id="bootScreen">
                                 <div>INTERNET TIME MACHINE</div>
                                 <div>SYSTEM READY</div>
                                 <div class="boot-line">_</div>
                             </div>
 
-                            <div class="year-content" id="yearContent">
-                                <h1>WELCOME TO 1995</h1>
-                                <div class="website-window">
-                                    <div class="web-title">MY HOMEPAGE</div>
-                                    <p>Welcome to my corner of the Web!</p>
-                                    <p>Best viewed with Netscape Navigator.</p>
-                                    <div class="links">HOME &nbsp; | &nbsp; ABOUT &nbsp; | &nbsp; GUESTBOOK</div>
-                                    <p class="counter">Visitors: 000001</p>
-                                </div>
-                            </div>
+                            <!-- YEAR CONTENT -->
+                            <div class="year-content" id="yearContent"></div>
                         </div>
                     </div>
                 </div>
 
+                <!-- POWER CONTROLS -->
                 <div class="monitor-bottom">
                     <div class="power-switch">
-                        <button type="button" class="button" id="powerButton" aria-label="Power"></button>
+                        <button type="button" class="button" id="powerButton" aria-label="Power button"></button>
                     </div>
                     <div class="power-led on" id="powerLed"></div>
                 </div>
@@ -74,32 +112,41 @@
         <button type="button" class="back-button" id="backButton">← Back</button>
     </section>
 
+    <!-- ===== INFO SECTION ===== -->
     <section class="info-section">
-        <h2>About This Era</h2>
+        <div class="info-heading">
+            <span class="section-kicker">ARCHIVE DATA</span>
+            <h2>About This Era</h2>
+        </div>
+
         <div class="info-card">
-            <h3 id="infoTitle">1995 — The Early Web</h3>
-            <p id="infoText">The web was still young. Personal homepages, guestbooks, simple HTML and animated GIFs were common.</p>
+            <h3 id="infoTitle">2026 — AI & Interactivity</h3>
+            <p id="infoText">
+                AI-powered interfaces. Real-time collaboration. 3D spaces and immersive web. APIs connected everything. The web became intelligent and interactive.
+            </p>
+
             <div class="info-grid">
                 <div>
-                    <strong>Design</strong>
-                    <span id="designInfo">Simple HTML</span>
+                    <strong>DESIGN</strong>
+                    <span id="designInfo">Glass Morphism</span>
                 </div>
                 <div>
-                    <strong>Popular</strong>
-                    <span id="popularInfo">Personal Homepages</span>
+                    <strong>POPULAR</strong>
+                    <span id="popularInfo">AI & 3D Web</span>
                 </div>
                 <div>
-                    <strong>Web Style</strong>
-                    <span id="styleInfo">Web 1.0</span>
+                    <strong>WEB STYLE</strong>
+                    <span id="styleInfo">Interactive Web</span>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer>
         <p>INTERNET TIME MACHINE</p>
         <span>Exploring the evolution of the Web</span>
-        <p>@Resk | Mayank Singh Chauhan</p>
+        <p>Created to showcase web design history from 1995 to 2026</p>
     </footer>
 
     <script src="time-control.js"></script>

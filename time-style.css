@@ -1,4 +1,8 @@
+/* Internet Time Machine - Responsive Design */
+
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -7,146 +11,441 @@ html {
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at 50% 0%, #30365c 0%, #20243a 45%, #151827 100%);
+  background: radial-gradient(circle at 50% -10%, #3c4674, #242a46 34%, #171b2d 70%, #10121e 100%);
   color: #f5f5f5;
-  font-family: Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 button {
   font: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
-header, section, footer {
-  width: min(1000px, 92%);
+/* ========================================
+   LAYOUT CONTAINERS
+   ======================================== */
+
+header,
+section,
+footer {
+  width: min(1000px, 90vw);
   margin: 0 auto;
 }
 
+/* ========================================
+   HEADER
+   ======================================== */
+
 header {
-  padding: 70px 0 45px;
+  padding: clamp(40px, 8vw, 80px) 0 clamp(30px, 6vw, 55px);
+  text-align: center;
 }
 
 .top-label {
-  margin-bottom: 18px;
-  color: #7dff5b;
-  font-family: monospace;
-  font-size: 13px;
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #8cff6a;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(10px, 2vw, 13px);
   letter-spacing: 2px;
+  text-shadow: 0 0 10px #5cff2240;
 }
 
 header h1 {
-  margin: 0 0 20px;
-  font-size: clamp(42px, 8vw, 76px);
-  line-height: 1;
-  letter-spacing: -3px;
+  margin: 0 0 clamp(12px, 3vw, 22px);
+  font-size: clamp(36px, 7vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -2px;
+  color: #fff;
 }
 
 header p {
-  max-width: 700px;
-  margin: 0;
-  color: #bfc4dc;
-  font-size: clamp(17px, 3vw, 21px);
+  max-width: 600px;
+  margin: 0 auto;
+  color: #c4c9dc;
+  font-size: clamp(14px, 2.5vw, 21px);
   line-height: 1.6;
 }
 
+/* ========================================
+   SECTIONS
+   ======================================== */
+
 section {
-  margin-bottom: 70px;
+  margin-bottom: clamp(40px, 8vw, 80px);
 }
 
 section h2 {
-  margin: 0 0 25px;
-  font-size: clamp(28px, 5vw, 42px);
+  margin: 0;
+  font-size: clamp(24px, 5vw, 42px);
   letter-spacing: -1px;
+  color: #fff;
 }
+
+/* ========================================
+   YEAR SELECTOR
+   ======================================== */
 
 .year-selector {
-  padding: 30px;
+  padding: clamp(20px, 4vw, 34px);
   border: 1px solid #ffffff12;
-  border-radius: 20px;
-  background: #ffffff06;
-  box-shadow: 0 20px 50px #0003, inset 0 1px #ffffff08;
+  border-radius: clamp(14px, 3vw, 22px);
+  background: linear-gradient(145deg, #ffffff09, #ffffff03);
+  box-shadow: 0 25px 60px #0004, inset 0 1px #ffffff0c;
+  backdrop-filter: blur(12px);
 }
 
-.year-buttons {
+.selector-heading {
   display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: clamp(10px, 3vw, 20px);
+  margin-bottom: clamp(20px, 4vw, 30px);
 }
 
-.year {
-  min-width: 100px;
-  padding: 15px 20px;
-  border: 1px solid #ffffff30;
-  border-radius: 10px;
-  background: #292e49;
-  color: white;
-  font-size: 17px;
+.section-kicker {
+  display: block;
+  margin-bottom: 6px;
+  color: #8490b9;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(9px, 1.8vw, 11px);
   font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.range-label {
+  padding: 6px 10px;
+  border: 1px solid #ffffff15;
+  border-radius: 6px;
+  color: #9ca5c2;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(9px, 1.8vw, 11px);
+  white-space: nowrap;
+}
+
+/* ========================================
+   TIME COUNTER
+   ======================================== */
+
+.time-counter {
+  width: min(700px, 100%);
+  margin: clamp(10px, 2vw, 18px) auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(8px, 3vw, 24px);
+}
+
+/* ========================================
+   YEAR WHEEL
+   ======================================== */
+
+.year-wheel {
+  position: relative;
+  width: min(440px, 95vw);
+  height: clamp(100px, 20vw, 130px);
+  padding: clamp(10px, 2vw, 13px);
+  border: 3px solid #777366;
+  border-radius: clamp(10px, 2.5vw, 15px);
+  background: linear-gradient(145deg, #e0dacb, #b4ae9f);
+  box-shadow: inset 0 2px #fffdf1, inset 0 -4px #777366, 0 9px 18px #0007;
+  overflow: hidden;
+}
+
+.year-wheel::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 2px solid #777366;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.wheel-decoration {
+  position: absolute;
+  z-index: 4;
+  width: clamp(10px, 2vw, 13px);
+  height: clamp(10px, 2vw, 13px);
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f7f2df 0 15%, #777366 16% 48%, #403e37 49% 100%);
+  box-shadow: 0 1px 2px #0008;
+}
+
+.wheel-decoration-left {
+  left: 5px;
+}
+
+.wheel-decoration-right {
+  right: 5px;
+}
+
+/* ========================================
+   WHEEL WINDOW
+   ======================================== */
+
+.wheel-window {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border: 3px solid #44433d;
+  border-radius: 6px;
+  background: #141411;
+  box-shadow: inset 0 6px 13px #000, inset 0 -6px 13px #000, 0 1px #fff7;
+}
+
+/* ========================================
+   DIGIT WHEEL
+   ======================================== */
+
+.digit-wheel {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  padding: 0 clamp(6px, 2vw, 10px);
+  transition: transform 0.32s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.digit {
+  position: relative;
+  height: clamp(60px, 12vw, 82px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-right: 1px solid #ffffff0d;
+}
+
+.digit:last-child {
+  border-right: none;
+}
+
+.digit::before,
+.digit::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: clamp(40px, 8vw, 54px);
+  height: clamp(40px, 8vw, 54px);
+  transform: translateX(-50%);
+  border: 1px solid #ffffff12;
+  border-radius: 50%;
+}
+
+.digit::before {
+  top: -30%;
+}
+
+.digit::after {
+  bottom: -30%;
+}
+
+.digit span {
+  display: block;
+  color: #e0dcd0;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(28px, 6vw, 64px);
+  font-weight: bold;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 0 #555, 0 0 3px #fff8;
+  transform: translateY(0);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease;
+}
+
+.wheel-line {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: #ffffff17;
+  pointer-events: none;
+  box-shadow: 0 1px #0008;
+}
+
+/* ========================================
+   WHEEL ANIMATIONS
+   ======================================== */
+
+.digit-wheel.roll-up {
+  animation: wheelUp 0.32s cubic-bezier(0.25, 0.7, 0.25, 1);
+}
+
+.digit-wheel.roll-down {
+  animation: wheelDown 0.32s cubic-bezier(0.25, 0.7, 0.25, 1);
+}
+
+@keyframes wheelUp {
+  0% { transform: translateY(20px); opacity: 0.25; }
+  45% { transform: translateY(-6px); opacity: 0.8; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes wheelDown {
+  0% { transform: translateY(-20px); opacity: 0.25; }
+  45% { transform: translateY(6px); opacity: 0.8; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ========================================
+   UP/DOWN BUTTONS
+   ======================================== */
+
+.time-arrow {
+  position: relative;
+  width: clamp(50px, 10vw, 62px);
+  height: clamp(60px, 12vw, 72px);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border: 2px solid #777366;
+  border-radius: 8px;
+  background: linear-gradient(to bottom, #e0dacb, #aaa495);
+  color: #2c2b26;
   cursor: pointer;
-  transition: transform .2s, background .2s, border-color .2s, box-shadow .2s;
+  box-shadow: inset 0 2px #fff8, inset 0 -4px #777366, 0 5px 9px #0006;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  font-size: clamp(11px, 2vw, 14px);
 }
 
-.year:hover {
-  transform: translateY(-4px);
-  background: #343b5d;
-  border-color: #6cff45;
-  box-shadow: 0 8px 20px #0004, 0 0 15px #5cff2225;
+.time-arrow span {
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: bold;
+  line-height: 1;
 }
 
-.year:active {
-  transform: scale(.96);
+.time-arrow small {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(6px, 1.5vw, 8px);
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-.year.active {
-  background: #5cff22;
-  color: #061006;
-  border-color: #b8ff9c;
-  box-shadow: 0 0 15px #5cff2270;
+.time-arrow:hover:not(:disabled) {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+  box-shadow: inset 0 2px #fff9, inset 0 -4px #777366, 0 8px 14px #0007;
 }
+
+.time-arrow:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: inset 0 3px 5px #0005, 0 2px 4px #0005;
+}
+
+.time-arrow:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+/* ========================================
+   HINT TEXT
+   ======================================== */
+
+.time-hint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #747d9c;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(9px, 1.8vw, 10px);
+  margin-top: clamp(10px, 2vw, 15px);
+}
+
+.time-hint span {
+  color: #a5acc2;
+  font-size: clamp(11px, 2vw, 13px);
+}
+
+.time-hint i {
+  opacity: 0.4;
+}
+
+/* ========================================
+   TIME MACHINE SECTION
+   ======================================== */
 
 .time-machine {
   text-align: center;
 }
 
-.time-machine > h2 {
-  font-family: monospace;
-  letter-spacing: 3px;
+.travel-heading span {
+  color: #7f88a8;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(9px, 1.8vw, 10px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.time-machine > .travel-heading h2 {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(20px, 4vw, 34px);
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
+
+/* ========================================
+   YEAR DISPLAY
+   ======================================== */
 
 .year-display {
   display: flex;
   align-items: center;
   justify-content: center;
   width: fit-content;
-  min-width: 180px;
-  min-height: 60px;
-  margin: 0 auto 35px;
-  padding: 8px 25px;
+  min-width: clamp(150px, 30vw, 190px);
+  min-height: clamp(50px, 10vw, 62px);
+  margin: clamp(15px, 3vw, 20px) auto clamp(25px, 5vw, 35px);
+  padding: 8px clamp(15px, 4vw, 28px);
   border: 2px solid #5cff22;
   border-radius: 8px;
   background: #071007;
   color: #b8ff9c;
-  font-family: monospace;
-  font-size: 30px;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(20px, 5vw, 30px);
   font-weight: bold;
-  letter-spacing: 5px;
+  letter-spacing: 3px;
   text-shadow: 0 0 5px #5cff22, 0 0 15px #5cff22;
   box-shadow: 0 0 15px #5cff2244, inset 0 0 15px #5cff2215;
 }
 
+/* ========================================
+   MONITOR - RESPONSIVE
+   ======================================== */
+
 .computer-container {
   width: min(500px, 95vw);
-  margin: 35px auto 20px;
+  margin: clamp(25px, 5vw, 35px) auto 20px;
 }
 
 .monitor {
   position: relative;
   width: 100%;
   aspect-ratio: 500 / 450;
-  padding: 8%;
-  border-radius: 10px;
+  padding: clamp(6%, 8vw, 8%);
+  border-radius: clamp(8px, 2vw, 10px);
   background: linear-gradient(145deg, #e0dac8, #c2bba8);
   box-shadow: 0 30px 50px #0007, inset 2px 2px 5px #ffffff80, inset -5px -5px 15px #0003;
 }
@@ -154,9 +453,9 @@ section h2 {
 .monitor-inner {
   width: 100%;
   height: 72%;
-  padding: 4%;
+  padding: clamp(2%, 4vw, 4%);
   background: #111;
-  border: 12px solid #908e7a;
+  border: clamp(8px, 2vw, 12px) solid #908e7a;
   border-top-color: #6e6d5f;
   border-bottom-color: #d7d4c1;
   border-radius: 6px;
@@ -169,7 +468,8 @@ section h2 {
   height: 100%;
   overflow: hidden;
   background: #020402;
-  border: 3px solid #000;
+  border: 2px solid #000;
+  border-radius: 4px;
   box-shadow: inset 10px 10px 25px #000a, inset -10px -10px 25px #000a;
 }
 
@@ -181,27 +481,31 @@ section h2 {
   overflow-y: auto;
   background: #020402;
   isolation: isolate;
-  transition: background .4s, color .4s;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 .screen::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   z-index: 20;
   pointer-events: none;
   background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, #ffffff09 4px);
-  
 }
 
 .screen::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   z-index: 21;
   pointer-events: none;
-  border-radius: 8px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 35px #0008;
 }
+
+/* ========================================
+   BOOT SCREEN
+   ======================================== */
 
 .boot-screen {
   position: absolute;
@@ -214,12 +518,12 @@ section h2 {
   gap: 10px;
   background: #020402;
   color: #b8ff9c;
-  font-family: monospace;
-  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(10px, 2vw, 12px);
   text-shadow: 0 0 5px #5cff22;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .boot-screen.show {
@@ -227,73 +531,162 @@ section h2 {
 }
 
 .boot-line {
-  animation: blink .7s infinite;
+  animation: blink 0.7s infinite;
 }
 
 @keyframes blink {
   50% { opacity: 0; }
 }
 
+/* ========================================
+   YEAR CONTENT
+   ======================================== */
+
 .year-content {
   position: relative;
   z-index: 5;
   width: 100%;
-  min-height:100%;
-  padding: 18px;
+  min-height: 100%;
+  padding: clamp(12px, 3vw, 18px);
   overflow-y: auto;
   color: #b8ff9c;
-  font-family: monospace;
-  transition: background .4s, color .4s;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(10px, 2vw, 12px);
+  transition: opacity 0.25s ease, background 0.4s ease, color 0.4s ease;
 }
 
 .year-content h1 {
-  margin: 0 0 12px;
-  font-size: 22px;
+  margin: 0 0 clamp(8px, 2vw, 12px);
+  font-size: clamp(14px, 3vw, 22px);
   line-height: 1.2;
 }
 
 .website-window {
   width: 100%;
-  padding: 12px;
+  padding: clamp(8px, 2vw, 12px);
   border: 1px solid currentColor;
   text-align: left;
 }
 
 .web-title {
-  margin-bottom: 12px;
-  padding: 7px;
+  margin-bottom: clamp(8px, 2vw, 12px);
+  padding: clamp(5px, 1.5vw, 7px);
   background: currentColor;
   color: #020402;
   font-weight: bold;
+  font-size: clamp(9px, 2vw, 11px);
 }
 
 .website-window p {
-  font-size: 11px;
+  font-size: clamp(9px, 1.8vw, 11px);
   line-height: 1.5;
+  margin: clamp(6px, 1.5vw, 10px) 0;
 }
 
+/* ========================================
+   NAVIGATION LINKS
+   ======================================== */
+
 .links {
-  margin: 12px 0;
-  font-size: 9px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(3px, 1vw, 5px);
+  margin: clamp(8px, 2vw, 12px) 0;
+  font-size: clamp(8px, 1.8vw, 10px);
+}
+
+.fake-link {
+  display: inline-block;
+  color: #57ff91;
   text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.15s ease, text-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.fake-link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 5px #57ff91, 0 0 12px #57ff9155;
+}
+
+.fake-link:active {
+  transform: scale(0.95);
 }
 
 .counter {
-  opacity: .8;
+  opacity: 0.8;
+  font-size: clamp(8px, 1.8vw, 10px);
 }
+
+/* ========================================
+   ERROR PAGE
+   ======================================== */
+
+.error-page {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px dashed currentColor;
+  padding: clamp(15px, 3vw, 20px);
+}
+
+.error-page h1 {
+  margin: clamp(8px, 2vw, 15px) 0 0;
+  font-size: clamp(32px, 8vw, 65px);
+  line-height: 1;
+  color: #ff5555;
+  text-shadow: 0 0 5px #ff3333, 0 0 15px #ff333355;
+}
+
+.error-page h2 {
+  margin: clamp(6px, 1.5vw, 8px) 0;
+  font-size: clamp(11px, 2vw, 14px);
+}
+
+.error-page p {
+  font-size: clamp(9px, 2vw, 10px);
+  margin: clamp(4px, 1vw, 6px) 0;
+}
+
+.error-page hr {
+  width: 100%;
+  margin: clamp(10px, 2vw, 15px) 0;
+  border: 0;
+  border-top: 1px dashed currentColor;
+}
+
+.fake-back {
+  color: #57ff91;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: clamp(9px, 2vw, 10px);
+  transition: color 0.15s ease;
+}
+
+.fake-back:hover {
+  color: white;
+  text-shadow: 0 0 6px #57ff91;
+}
+
+/* ========================================
+   MONITOR CONTROLS
+   ======================================== */
 
 .monitor-bottom {
   position: absolute;
-  right: 10%;
-  bottom: 12px;
+  right: clamp(6%, 10%, 15%);
+  bottom: clamp(8px, 2vw, 12px);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .power-switch {
-  width: 38px;
-  height: 38px;
+  width: clamp(30px, 6vw, 38px);
+  height: clamp(30px, 6vw, 38px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -302,19 +695,25 @@ section h2 {
 }
 
 .power-switch .button {
-  width: 24px;
-  height: 24px;
+  width: 70%;
+  height: 70%;
   border: 2px solid #555;
   border-radius: 50%;
   background: #ccc5b3;
   cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.power-switch .button:active {
+  transform: scale(0.9);
 }
 
 .power-led {
-  width: 9px;
-  height: 9px;
+  width: clamp(7px, 1.5vw, 9px);
+  height: clamp(7px, 1.5vw, 9px);
   border-radius: 50%;
   background: #333;
+  transition: background 0.2s, box-shadow 0.2s;
 }
 
 .power-led.on {
@@ -324,7 +723,7 @@ section h2 {
 
 .monitor-base {
   width: 60%;
-  height: 45px;
+  height: clamp(35px, 7vw, 45px);
   margin: -2px auto 0;
   background: linear-gradient(to bottom, #d3ccbc, #908e7a);
   border-radius: 0 0 5px 5px;
@@ -333,167 +732,343 @@ section h2 {
 
 .monitor-holder-container {
   width: 45%;
-  height: 45px;
+  height: clamp(35px, 7vw, 45px);
   margin: 0 auto;
 }
 
 .monitor-holder {
   width: 100%;
-  height: 35px;
+  height: clamp(30px, 6vw, 35px);
   background: linear-gradient(to bottom, #6e6d5f, #908e7a);
   border-radius: 50%;
 }
 
+/* ========================================
+   BACK BUTTON
+   ======================================== */
+
 .back-button {
-  margin-top: 10px;
-  padding: 11px 22px;
+  margin-top: clamp(6px, 1.5vw, 10px);
+  padding: clamp(8px, 2vw, 11px) clamp(15px, 3vw, 22px);
   border: 1px solid #ffffff25;
   border-radius: 8px;
   background: #292e49;
   color: white;
   cursor: pointer;
-  transition: .2s;
+  font-size: clamp(12px, 2.5vw, 14px);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .back-button:hover {
   background: #3b4265;
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px #0004;
 }
 
+.back-button:active {
+  transform: scale(0.96);
+}
+
+/* ========================================
+   INFO SECTION
+   ======================================== */
+
 .info-section {
-  padding: 30px;
+  padding: clamp(15px, 4vw, 30px);
   border-top: 1px solid #ffffff12;
 }
 
+.info-heading {
+  margin-bottom: clamp(15px, 3vw, 25px);
+}
+
 .info-card {
-  padding: 25px;
-  border-radius: 15px;
-  background: #ffffff06;
+  padding: clamp(15px, 4vw, 27px);
+  border-radius: clamp(12px, 3vw, 16px);
+  background: linear-gradient(145deg, #ffffff08, #ffffff03);
   border: 1px solid #ffffff10;
+  box-shadow: 0 15px 40px #0003;
+  backdrop-filter: blur(8px);
 }
 
 .info-card h3 {
   margin-top: 0;
-  color: #7dff5b;
-  font-family: monospace;
+  margin-bottom: clamp(10px, 2vw, 15px);
+  color: #8cff6a;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(14px, 3vw, 18px);
 }
 
 .info-card p {
-  color: #bfc4dc;
-  line-height: 1.6;
+  color: #c0c6d9;
+  line-height: 1.65;
+  font-size: clamp(12px, 2vw, 14px);
+  margin: 0 0 clamp(15px, 3vw, 22px);
 }
 
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: clamp(10px, 2vw, 12px);
+  margin-top: clamp(15px, 3vw, 22px);
 }
 
 .info-grid div {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 14px;
+  padding: clamp(12px, 2.5vw, 15px);
   border: 1px solid #ffffff12;
   border-radius: 10px;
   background: #ffffff05;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.info-grid div:hover {
+  transform: translateY(-3px);
+  background: #ffffff09;
 }
 
 .info-grid strong {
-  color: #7dff5b;
-  font-family: monospace;
-  font-size: 12px;
+  color: #8cff6a;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(9px, 1.8vw, 11px);
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .info-grid span {
-  color: #bfc4dc;
-  font-size: 14px;
+  color: #c0c6d9;
+  font-size: clamp(12px, 2vw, 14px);
 }
 
+/* ========================================
+   FOOTER
+   ======================================== */
+
 footer {
-  padding: 30px 0 50px;
+  padding: clamp(20px, 4vw, 30px) 0 clamp(30px, 6vw, 55px);
   text-align: center;
   color: #737991;
-  font-family: monospace;
-  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(10px, 2vw, 12px);
+  border-top: 1px solid #ffffff08;
 }
 
 footer p {
-  margin: 0 0 8px;
+  margin: 0 0 clamp(6px, 1.5vw, 8px);
   color: #7dff5b;
 }
 
-/* Year-specific themes */
-body.year-1995 .screen { background: #020402; }
-body.year-1995 .year-content { color: #b8ff9c; }
-body.year-1995 .website-window { border-style: dashed; }
-
-body.year-2000 .screen { background: #001f4d; }
-body.year-2000 .year-content { color: white; font-family: Arial, sans-serif; }
-body.year-2000 .website-window { border: 3px solid #ffcc00; background: #003b82; }
-body.year-2000 .web-title { background: #ffcc00; color: #003b82; }
-
-body.year-2005 .screen { background: linear-gradient(135deg, #d8eaff, #ffffff); }
-body.year-2005 .year-content { color: #245a9c; font-family: Arial, sans-serif; }
-body.year-2005 .website-window { border: 1px solid #9cbce0; border-radius: 8px; background: white; box-shadow: 0 5px 15px #7777; }
-body.year-2005 .web-title { border-radius: 5px; background: linear-gradient(#7dc5ff, #2f80c7); color: white; }
-
-body.year-2010 .screen { background: linear-gradient(135deg, #ececec, #ffffff); }
-body.year-2010 .year-content { color: #333; font-family: Arial, sans-serif; }
-body.year-2010 .website-window { border: none; background: white; box-shadow: 0 4px 15px #0003; }
-body.year-2010 .web-title { background: #3b5998; color: white; }
-
-body.year-2015 .screen { background: #fafafa; }
-body.year-2015 .year-content { color: #333; font-family: Arial, sans-serif; }
-body.year-2015 .website-window { border: none; border-radius: 3px; background: white; box-shadow: 0 3px 12px #0002; }
-body.year-2015 .web-title { background: #607d8b; color: white; }
-
-body.year-2020 .screen { background: #f5f6fa; }
-body.year-2020 .year-content { color: #222; font-family: Arial, sans-serif; }
-body.year-2020 .website-window { border: none; border-radius: 12px; background: white; box-shadow: 0 6px 20px #0002; }
-body.year-2020 .web-title { background: #222; color: white; border-radius: 8px; }
-
-body.year-2026 .screen { background: radial-gradient(circle at 30% 20%, #18264a, #050711); }
-body.year-2026 .year-content { color: #e8eeff; font-family: Arial, sans-serif; }
-body.year-2026 .website-window { border: 1px solid #ffffff25; border-radius: 16px; background: #ffffff0d; backdrop-filter: blur(8px); }
-body.year-2026 .web-title { background: linear-gradient(90deg, #7d5cff, #35cfff); color: white; border-radius: 10px; }
-
-body.power-off .screen { background: #000; }
-body.power-off .year-content { opacity: 0; }
-body.power-off .power-led { background: #333; box-shadow: none; }
-
-@media (max-width: 600px) {
-  header { padding-top: 45px; }
-  header h1 { letter-spacing: -2px; }
-  .year-selector, .info-section { padding: 22px; }
-  .year { min-width: 105px; }
-  .monitor-inner { border-width: 8px; }
-  .year-content { padding: 10px; }
-  .year-content h1 { font-size: 16px; }
-  .info-grid { grid-template-columns: 1fr; }
+footer span {
+  display: block;
+  margin: clamp(8px, 1.5vw, 10px) 0;
+  font-size: clamp(10px, 1.8vw, 12px);
 }
 
-@media (max-width: 380px) {
-  header h1 { font-size: 34px; }
-  .year { min-width: 90px; padding: 12px 14px; }
-  .monitor-inner { border-width: 6px; }
-  .year-content h1 { font-size: 13px; }
+/* ========================================
+   YEAR THEMES
+   ======================================== */
+
+body.year-1995 .screen {
+  background: #1a1a1a;
 }
 
-/* CRT fake navigation links */
-.link {
-    color: #00ff66;
-    text-decoration: underline;
-    cursor: pointer;
-    font-weight: bold;
+body.year-1995 .year-content {
+  color: #00ff00;
+  text-shadow: 0 0 3px #00ff00;
 }
 
-.link:hover {
-    color: #ffffff;
-    text-shadow: 0 0 6px #00ff66;
+body.year-1995 .website-window {
+  border-style: dashed;
+  border-color: #00ff00;
 }
 
-.link:visited {
-    color: #00ff66;
+body.year-1995 .web-title {
+  background: #000;
+  color: #00ff00;
+  border: 1px dashed #00ff00;
+}
+
+body.year-2000 .screen {
+  background: #001f4d;
+}
+
+body.year-2000 .year-content {
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+body.year-2000 .website-window {
+  border: 2px solid #ffcc00;
+  background: #003b82;
+}
+
+body.year-2000 .web-title {
+  background: #ffcc00;
+  color: #003b82;
+  border: none;
+}
+
+body.year-2005 .screen {
+  background: linear-gradient(135deg, #d8eaff, #e8f4ff);
+}
+
+body.year-2005 .year-content {
+  color: #245a9c;
+  font-family: Arial, sans-serif;
+  text-shadow: none;
+}
+
+body.year-2005 .website-window {
+  border: 1px solid #9cbce0;
+  background: #f5f9ff;
+  border-radius: 8px;
+}
+
+body.year-2005 .web-title {
+  background: linear-gradient(135deg, #7dc5ff, #2f80c7);
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+body.year-2010 .screen {
+  background: linear-gradient(135deg, #f0f0f0, #ffffff);
+}
+
+body.year-2010 .year-content {
+  color: #333333;
+  font-family: Arial, sans-serif;
+  text-shadow: none;
+}
+
+body.year-2010 .website-window {
+  border: none;
+  background: #ffffff;
+  border-radius: 6p;}
+
+/* ========================================
+   2015 — MODERN WEB ERA
+   ======================================== */
+
+body.year-2015 .screen {
+  background: linear-gradient(135deg, #f5f7fa, #e9eef5);
+}
+
+body.year-2015 .year-content {
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: none;
+}
+
+body.year-2015 .website-window {
+  border: 1px solid #d5dbe3;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px #0002;
+}
+
+body.year-2015 .web-title {
+  background: #24292e;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  font-size: clamp(10px, 2vw, 12px);
+}
+
+body.year-2015 .link {
+  color: #1976d2;
+}
+
+body.year-2015 .link:hover {
+  color: #0d47a1;
+  text-shadow: none;
+}
+
+
+/* ========================================
+   2020 — DARK / SOCIAL WEB ERA
+   ======================================== */
+
+body.year-2020 .screen {
+  background: #18191a;
+}
+
+body.year-2020 .year-content {
+  color: #e4e6eb;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: none;
+}
+
+body.year-2020 .website-window {
+  border: none;
+  background: #242526;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px #0006;
+}
+
+body.year-2020 .web-title {
+  background: #3a3b3c;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+}
+
+body.year-2020 .link {
+  color: #2e89ff;
+  text-decoration: none;
+}
+
+body.year-2020 .link:hover {
+  color: #71a7ff;
+  text-shadow: none;
+}
+
+
+/* ========================================
+   2026 — FUTURE WEB
+   ======================================== */
+
+body.year-2026 .screen {
+  background:
+    radial-gradient(circle at 20% 20%, #18304d, transparent 35%),
+    radial-gradient(circle at 80% 80%, #30184d, transparent 35%),
+    #050711;
+}
+
+body.year-2026 .year-content {
+  color: #d9e7ff;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 0 0 4px #6aa8ff44;
+}
+
+body.year-2026 .website-window {
+  border: 1px solid #4f7cff66;
+  background: #0d1220cc;
+  border-radius: 14px;
+  box-shadow:
+    0 0 20px #397bff22,
+    inset 0 0 20px #ffffff05;
+  backdrop-filter: blur(8px);
+}
+
+body.year-2026 .web-title {
+  background: linear-gradient(90deg, #315cff, #8b4dff);
+  color: #ffffff;
+  border: none;
+  border-radius: 9px;
+  box-shadow: 0 0 15px #5b5cff44;
+}
+
+body.year-2026 .link {
+  color: #65d9ff;
+  text-decoration: none;
+}
+
+body.year-2026 .link:hover {
+  color: #ffffff;
+  text-shadow:
+    0 0 6px #65d9ff,
+    0 0 15px #65d9ff66;
 }
