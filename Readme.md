@@ -1,78 +1,28 @@
  Internet Time Machine
 
-Hey ! I have made an interactive website that shows you how the internet changed over time. It'll give y'all nostalgia :)
+ About-
+Its a cool history based project that tells us how the internet changed over time to understand about past learnings and improvements that occur over time.
 
- About the Project
+Purpose-
+I made this website for history based learnings purpose that will not just tell you it will also make a visual image on your mind and you will learn about many things on internet that was on old era.
 
-Internet Time Machine is a begginer friendly project made with:
+Structure-
+Time Machine/
+|
+|
+---Readme.md
+|
+|
+---index.html
+|
+|
+---time-style.css
+|
+|
+---time-control.js
 
--HTML
--CSS
--JavaScript
 
-The idea is simple: choose a year and travel back to that era to see what was changes from then to now !
-
-Currently, the project includes years from 1995 to 2016
-
-Features :
-
--Select different years
--Internet history/time-travel concept
--Similar screen as the era for real feel
--Year-based trends and information
--Interactive JavaScript year selection
--Stuctured page layout.
--Scrollable screen and clickable working links.
-
-️ Available Years
-
-The current version includes:
-
-"1995" · "2000" · "2005" · "2010" · "2015" · "2020" · "2026"
-
-🧠 How It Works
-
-When a year button is clicked, JavaScript reads the year from its "data-year" attribute and updates the year display on the page.
-
-E.g.:
-<button class="year" data-year="1995">1995</button>
-The JavaScript then displays the selected year in the "Traveling To" section.
-
-Project Structure
-Time-Machine/
-│
-├── index.html
-├── time-style.css
-├── time-control.js
-└── README.md
-
-Goal
-The goal of this project is to make learning about history to see what changes have been done.
-
-Each year can have its own:-
--Website designs
--Popular platforms
--Internet trends
--Games
--Technologies
--Visual style
--Important events
-
-Future Improvements
-Add unique content for every year
-Create different visual styles for different eras
-Add animations and transitions
-Add a timeline
-Add historical websites and technologies
-Add sound effects
-Add a "Back" button functionality
-Improve mobile responsiveness
-Add more years
-
-Author
-@Resk | Mayank Singh Chauhan
-Made with love while learning HTML, CSS & JavaScript.
----
+ 
 ⭐ If you like the idea, consider giving the project a vote to help me get 20x multiplier for  a laptop for better coding !
 
 --Updates--
@@ -80,6 +30,9 @@ Made with love while learning HTML, CSS & JavaScript.
 
 -Interactive clickable links.
 
+-Better css for new unique styles.
+
+-Better year selector.
 
 AI Usage -
 I use ai for ideas, designs and stucturing website work for my ease and it help me learn to code for my projects.
