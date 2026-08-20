@@ -447,29 +447,10 @@ function handleSearch() {
   currentSearchQuery = query;
   performSearch(query);
 }
-
-// Make API call to backend for search results
+// Redirect to duckduckgo to show search results.
 function performSearch(query) {
-  // Show loading state
-  searchResults.innerHTML = `
-    <div class="search-loading">
-      <p>Searching...</p>
-    </div>
-  `;
-  searchResults.style.display = 'block';
-  
-  // Call your backend API
-  fetch(`/api/search?q=${encodeURIComponent(query)}`)
-    .then(response => response.json())
-    .then(data => displaySearchResults(data))
-    .catch(error => {
-      console.error('Search error:', error);
-      searchResults.innerHTML = `
-        <div class="search-error">
-          <p>Could not fetch results. Try again.</p>
-        </div>
-      `;
-    });
+  const duckDuckGoUrl = "https://duckduckgo.com/?q=" + encodeURIComponent(query);
+  window.open(duckDuckGoUrl, "_blank");
 }
 
 // Display search results on screen
