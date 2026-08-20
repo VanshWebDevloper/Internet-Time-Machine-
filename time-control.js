@@ -449,8 +449,10 @@ function handleSearch() {
 }
 // Redirect to duckduckgo to show search results.
 function performSearch(query) {
-  const duckDuckGoUrl = "https://duckduckgo.com/?q=" + encodeURIComponent(query);
-  window.open(duckDuckGoUrl, "_blank");
+   const duckDuckGoUrl =
+     "https://duckduckgo.com/?q=" + encodeURIComponent(query);
+ 
+   window.location.href = duckDuckGoUrl;
 }
 
 // Display search results on screen
