@@ -285,9 +285,20 @@ function loadYear(year) {
     }
   });
 
-  // Build the fake website
+  // Build the fake website with search box
   yearContent.innerHTML = `
     <h1>${data.title}</h1>
+    
+    <div class="search-box">
+      <input 
+        id="searchInput" 
+        type="text" 
+        placeholder="Search the web..."
+        class="search-input"
+      >
+      <button id="searchButton" class="search-button">SEARCH</button>
+    </div>
+    
     <div class="website-window">
       <div class="web-title">${data.siteTitle}</div>
       <p>${data.content}</p>
@@ -295,6 +306,22 @@ function loadYear(year) {
       <p class="counter">${data.visitors}</p>
     </div>
   `;
+  
+  // Attach search event listeners
+  const searchButton = document.getElementById('searchButton');
+  const searchInput = document.getElementById('searchInput');
+  
+  if (searchButton) {
+    searchButton.addEventListener('click', handleSearch);
+  }
+  
+  if (searchInput) {
+    searchInput.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        handleSearch();
+      }
+    });
+  }
 
   // Add clickable navigation links
   const navContainer = document.getElementById('crtNavigation');
@@ -330,16 +357,18 @@ function loadYear(year) {
   playBootAnimation();
 }
 
-
+// ========================================
+// SHOW 404 ERROR PAGE
+// ========================================
 
 function showLinkPage(linkName) {
   yearContent.innerHTML = `
-    <div class="website-window page">
+    <div class="website-window error-page">
       <div class="web-title">INTERNET TIME MACHINE</div>
-      <h1>Under Development</h1>
+      <h1>404</h1>
       <h2>${linkName.toUpperCase()} PAGE</h2>
-      <p>Content will be added soon in this era.</p>
-      
+      <p>Content not available in this era.</p>
+      <p>Try visiting from a different year.</p>
       <hr>
       <a href="#" class="fake-back" id="returnHome">← RETURN HOME</a>
     </div>
@@ -400,6 +429,85 @@ function togglePower() {
 }
 
 powerButton.addEventListener('click', togglePower);
+
+// ========================================
+// SEARCH FUNCTIONALITY
+// ========================================
+
+const searchResults = document.getElementById('searchResults');
+let currentSearchQuery = '';
+
+// Handle search when user clicks button or presses Enter
+function handleSearch() {
+  const searchInput = document.getElementById('searchInput');
+  const query = searchInput?.value.trim();
+  
+  if (!query) return;
+  
+  currentSearchQuery = query;
+  performSearch(query);
+}
+
+// Make API call to backend for search results
+function performSearch(query) {
+  // Show loading state
+  searchResults.innerHTML = `
+    <div class="search-loading">
+      <p>Searching...</p>
+    </div>
+  `;
+  searchResults.style.display = 'block';
+  
+  // Call your backend API
+  fetch(`/api/search?q=${encodeURIComponent(query)}`)
+    .then(response => response.json())
+    .then(data => displaySearchResults(data))
+    .catch(error => {
+      console.error('Search error:', error);
+      searchResults.innerHTML = `
+        <div class="search-error">
+          <p>Could not fetch results. Try again.</p>
+        </div>
+      `;
+    });
+}
+
+// Display search results on screen
+function displaySearchResults(data) {
+  if (!data.results || data.results.length === 0) {
+    searchResults.innerHTML = `
+      <div class="no-results">
+        <p>No results found for "${currentSearchQuery}"</p>
+      </div>
+    `;
+    return;
+  }
+  
+  let html = `<div class="results-list">`;
+  
+  data.results.forEach(result => {
+    html += `
+      <div class="result-item">
+        <h4 class="result-title">${result.title}</h4>
+        <p class="result-url">${result.url}</p>
+        <p class="result-snippet">${result.snippet}</p>
+      </div>
+    `;
+  });
+  
+  html += `</div>`;
+  searchResults.innerHTML = html;
+}
+
+// Go back to normal view from search results
+function clearSearch() {
+  currentSearchQuery = '';
+  searchResults.style.display = 'none';
+  searchResults.innerHTML = '';
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) searchInput.value = '';
+  loadYear(currentYear);
+}
 
 // ========================================
 // INITIALIZE ON LOAD

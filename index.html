@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Internet Time Machine — explore how the web evolved from 1995 to 2026 through interactive screens and authentic year-by-year designs.">
-    <meta name="theme-color" content="#10121e">
+    <meta name="theme-color" content="#eee8dc">
     
     <title>Internet Time Machine - Web Evolution 1995-2026</title>
     
@@ -15,17 +15,17 @@
 
     <!-- ===== HEADER ===== -->
     <header>
-        <div class="top-label">[ INTERNET ARCHIVE TERMINAL ]</div>
-        <h1>Internet Time Machine</h1>
-        <p>Travel through decades of web design. See how the internet looked in 1995, 2000, 2005, and beyond. A journey through digital history.</p>
+        <div class="top-label">A SMALL, UNOFFICIAL WEB HISTORY PROJECT</div>
+        <h1>Internet<br><em>Time Machine</em></h1>
+        <p>Browse a few snapshots of how the web used to feel. Pick a year, sit back, and have a look around.</p>
     </header>
 
     <!-- ===== YEAR SELECTOR ===== -->
     <section class="year-selector">
         <div class="selector-heading">
             <div>
-                <span class="section-kicker">TIME CONTROL</span>
-                <h2>Select Year For Time-Travel</h2>
+                <span class="section-kicker">01 / PICK A YEAR</span>
+                <h2>Where should we go?</h2>
             </div>
             <span class="range-label">1995 — 2026</span>
         </div>
@@ -68,7 +68,7 @@
     <section class="time-machine">
         <div class="travel-heading">
             <span>CURRENT DESTINATION</span>
-            <h2>Traveling To:</h2>
+            <h2>Now visiting</h2>
         </div>
 
         <div class="year-display">
@@ -89,7 +89,11 @@
                             </div>
 
                             <!-- YEAR CONTENT -->
-                            <div class="year-content" id="yearContent"></div>
+                            <div class="year-content" id="yearContent">
+                                <!-- Search feature will be added here by JavaScript -->
+                            </div>
+                            
+                            <div id="searchResults" class="search-results" style="display: none;"></div>
                         </div>
                     </div>
                 </div>
@@ -115,8 +119,8 @@
     <!-- ===== INFO SECTION ===== -->
     <section class="info-section">
         <div class="info-heading">
-            <span class="section-kicker">ARCHIVE DATA</span>
-            <h2>About This Era</h2>
+            <span class="section-kicker">02 / FIELD NOTES</span>
+            <h2>A note from this era</h2>
         </div>
 
         <div class="info-card">
@@ -144,9 +148,9 @@
 
     <!-- ===== FOOTER ===== -->
     <footer>
-        <p>INTERNET TIME MACHINE</p>
-        <span>Exploring the evolution of the Web</span>
-        <p>Created to showcase web design history from 1995 to 2026</p>
+        <p>INTERNET TIME MACHINE / A WEB HISTORY PROJECT</p>
+        <span>made with curiosity, old screenshots, and a little too much nostalgia</span>
+        <p>no cookies. no accounts. just the web, one year at a time.</p>
     </footer>
 
     <script src="time-control.js"></script>

@@ -732,16 +732,11 @@ section h2 {
 
 .monitor-holder-container {
   width: 45%;
-  height: clamp(35px, 7vw, 45px);
+  height: clamp(30px, 7vw, 45px);
   margin: 0 auto;
 }
 
-.monitor-holder {
-  width: 100%;
-  height: clamp(30px, 6vw, 35px);
-  background: linear-gradient(to bottom, #6e6d5f, #908e7a);
-  border-radius: 50%;
-}
+
 
 /* ========================================
    BACK BUTTON
@@ -849,7 +844,7 @@ section h2 {
 footer {
   padding: clamp(20px, 4vw, 30px) 0 clamp(30px, 6vw, 55px);
   text-align: center;
-  color: #737991;
+  color: grey;
   font-family: 'Courier New', monospace;
   font-size: clamp(10px, 2vw, 12px);
   border-top: 1px solid #ffffff08;
@@ -857,7 +852,7 @@ footer {
 
 footer p {
   margin: 0 0 clamp(6px, 1.5vw, 8px);
-  color: #7dff5b;
+  color: grey;
 }
 
 footer span {
@@ -867,208 +862,746 @@ footer span {
 }
 
 /* ========================================
-   YEAR THEMES
+   YEAR THEMES - PROGRESSION WITH DESIGN
    ======================================== */
 
+/* 1995 - VERY BASIC TERMINAL AESTHETIC */
 body.year-1995 .screen {
-  background: #1a1a1a;
+  background: #0a0a0a;
 }
 
 body.year-1995 .year-content {
   color: #00ff00;
-  text-shadow: 0 0 3px #00ff00;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff0055;
+  font-size: clamp(9px, 1.8vw, 11px);
+  line-height: 1.8;
 }
 
 body.year-1995 .website-window {
-  border-style: dashed;
-  border-color: #00ff00;
+  border: 2px dashed #00ff00;
+  background: #000;
+  box-shadow: inset 0 0 10px #00ff0022;
+  padding: clamp(10px, 2vw, 15px);
 }
 
 body.year-1995 .web-title {
   background: #000;
   color: #00ff00;
   border: 1px dashed #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+  font-size: clamp(9px, 1.8vw, 11px);
+  padding: 4px 6px;
 }
 
+body.year-1995 .links {
+  gap: 3px;
+  font-size: clamp(8px, 1.5vw, 9px);
+}
+
+/* 2000 - BASIC BUT COLORFUL PORTAL */
 body.year-2000 .screen {
-  background: #001f4d;
+  background: linear-gradient(to bottom, #001a40, #003366);
 }
 
 body.year-2000 .year-content {
   color: #ffffff;
   font-family: Arial, sans-serif;
+  font-size: clamp(10px, 1.9vw, 12px);
 }
 
 body.year-2000 .website-window {
-  border: 2px solid #ffcc00;
-  background: #003b82;
+  border: 3px solid #ffcc00;
+  background: #002244;
+  box-shadow: 0 4px 12px #000000;
+  padding: clamp(12px, 2.5vw, 16px);
 }
 
 body.year-2000 .web-title {
   background: #ffcc00;
-  color: #003b82;
+  color: #002244;
   border: none;
+  font-weight: bold;
+  font-size: clamp(10px, 2vw, 12px);
+  padding: 6px 8px;
 }
 
+body.year-2000 .links {
+  color: #ffff00;
+  font-size: clamp(9px, 1.8vw, 10px);
+}
+
+/* 2005 - GLOSSY WEB 2.0 WITH ROUNDED CORNERS */
 body.year-2005 .screen {
-  background: linear-gradient(135deg, #d8eaff, #e8f4ff);
+  background: linear-gradient(135deg, #c8deff 0%, #e8f4ff 100%);
 }
 
 body.year-2005 .year-content {
-  color: #245a9c;
+  color: #1a5a9c;
   font-family: Arial, sans-serif;
-  text-shadow: none;
+  font-size: clamp(10px, 2vw, 12px);
 }
 
 body.year-2005 .website-window {
-  border: 1px solid #9cbce0;
-  background: #f5f9ff;
-  border-radius: 8px;
+  border: 1px solid #7db8e8;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+  border-radius: clamp(12px, 3vw, 16px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  padding: clamp(12px, 2.5vw, 18px);
 }
 
 body.year-2005 .web-title {
-  background: linear-gradient(135deg, #7dc5ff, #2f80c7);
+  background: linear-gradient(135deg, #5db3ff, #2b7dcc);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: clamp(8px, 2vw, 12px);
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 8px 10px;
+  font-size: clamp(10px, 2vw, 12px);
 }
 
+body.year-2005 .links {
+  color: #1a5a9c;
+  font-size: clamp(9px, 1.9vw, 11px);
+  font-weight: bold;
+}
+
+/* 2010 - CLEAN MODERN WITH SUBTLE SHADOWS */
 body.year-2010 .screen {
-  background: linear-gradient(135deg, #f0f0f0, #ffffff);
+  background: linear-gradient(to bottom, #ffffff, #f5f5f5);
 }
 
 body.year-2010 .year-content {
   color: #333333;
   font-family: Arial, sans-serif;
-  text-shadow: none;
+  font-size: clamp(11px, 2.1vw, 13px);
 }
 
 body.year-2010 .website-window {
   border: none;
   background: #ffffff;
-  border-radius: 6p;}
+  border-radius: clamp(8px, 2vw, 12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  padding: clamp(14px, 2.8vw, 20px);
+}
 
-/* ========================================
-   2015 — MODERN WEB ERA
-   ======================================== */
+body.year-2010 .web-title {
+  background: linear-gradient(to bottom, #3b5998, #2d4373);
+  color: white;
+  border-radius: clamp(6px, 1.5vw, 8px);
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  padding: 10px 12px;
+  font-size: clamp(11px, 2vw, 12px);
+}
 
+body.year-2010 .links {
+  color: #3b5998;
+  font-size: clamp(10px, 2vw, 11px);
+  font-weight: 600;
+}
+
+/* 2015 - MINIMAL FLAT DESIGN */
 body.year-2015 .screen {
-  background: linear-gradient(135deg, #f5f7fa, #e9eef5);
+  background: #fafbfc;
 }
 
 body.year-2015 .year-content {
-  color: #333;
-  font-family: Arial, Helvetica, sans-serif;
-  text-shadow: none;
+  color: #2c3e50;
+  font-family: Arial, sans-serif;
+  font-size: clamp(11px, 2.1vw, 13px);
 }
 
 body.year-2015 .website-window {
-  border: 1px solid #d5dbe3;
+  border: none;
   background: #ffffff;
-  border-radius: 4px;
-  box-shadow: 0 3px 10px #0002;
+  border-radius: clamp(4px, 1vw, 6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: clamp(15px, 3vw, 22px);
 }
 
 body.year-2015 .web-title {
-  background: #24292e;
-  color: #ffffff;
-  border: none;
-  border-radius: 3px;
-  font-size: clamp(10px, 2vw, 12px);
+  background: #34495e;
+  color: white;
+  border-radius: clamp(3px, 0.8vw, 4px);
+  font-weight: 600;
+  padding: 10px 12px;
+  font-size: clamp(11px, 2vw, 12px);
 }
 
-body.year-2015 .link {
-  color: #1976d2;
+body.year-2015 .links {
+  color: #3498db;
+  font-size: clamp(10px, 2vw, 11px);
+  font-weight: 500;
 }
 
-body.year-2015 .link:hover {
-  color: #0d47a1;
-  text-shadow: none;
-}
-
-
-/* ========================================
-   2020 — DARK / SOCIAL WEB ERA
-   ======================================== */
-
+/* 2020 - DARK MODE WITH DEPTH */
 body.year-2020 .screen {
-  background: #18191a;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
 }
 
 body.year-2020 .year-content {
-  color: #e4e6eb;
-  font-family: Arial, Helvetica, sans-serif;
-  text-shadow: none;
+  color: #e8e8e8;
+  font-family: Arial, sans-serif;
+  font-size: clamp(11px, 2.1vw, 13px);
 }
 
 body.year-2020 .website-window {
-  border: none;
-  background: #242526;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px #0006;
+  border: 1px solid #333333;
+  background: linear-gradient(135deg, #252525 0%, #1f1f1f 100%);
+  border-radius: clamp(12px, 2.5vw, 16px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: clamp(15px, 3vw, 22px);
 }
 
 body.year-2020 .web-title {
-  background: #3a3b3c;
-  color: #ffffff;
-  border: none;
-  border-radius: 7px;
+  background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+  color: #e8e8e8;
+  border: 1px solid #444444;
+  border-radius: clamp(8px, 1.8vw, 10px);
+  font-weight: 600;
+  padding: 12px 14px;
+  font-size: clamp(11px, 2vw, 12px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-body.year-2020 .link {
-  color: #2e89ff;
-  text-decoration: none;
+body.year-2020 .links {
+  color: #61dafb;
+  font-size: clamp(10px, 2vw, 11px);
+  font-weight: 500;
 }
 
-body.year-2020 .link:hover {
-  color: #71a7ff;
-  text-shadow: none;
-}
-
-
-/* ========================================
-   2026 — FUTURE WEB
-   ======================================== */
-
+/* 2026 - ADVANCED GLASS MORPHISM + AI AESTHETIC */
 body.year-2026 .screen {
-  background:
-    radial-gradient(circle at 20% 20%, #18304d, transparent 35%),
-    radial-gradient(circle at 80% 80%, #30184d, transparent 35%),
-    #050711;
+  background: radial-gradient(circle at 20% 50%, #1a0d3a 0%, #0a0515 50%, #000000 100%);
 }
 
 body.year-2026 .year-content {
-  color: #d9e7ff;
-  font-family: Arial, Helvetica, sans-serif;
-  text-shadow: 0 0 4px #6aa8ff44;
+  color: #e0d5ff;
+  font-family: Arial, sans-serif;
+  font-size: clamp(11px, 2.2vw, 13px);
+  text-shadow: 0 0 10px #8b5cff30, 0 0 20px #5c35ff15;
 }
 
 body.year-2026 .website-window {
-  border: 1px solid #4f7cff66;
-  background: #0d1220cc;
-  border-radius: 14px;
-  box-shadow:
-    0 0 20px #397bff22,
-    inset 0 0 20px #ffffff05;
-  backdrop-filter: blur(8px);
+  border: 1.5px solid #8b5cff40;
+  background: linear-gradient(135deg, #1a0d3a20 0%, #2d1b5a15 100%);
+  border-radius: clamp(16px, 3vw, 20px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(139, 92, 255, 0.15),
+              inset 0 1px 1px rgba(255, 255, 255, 0.1),
+              0 0 20px rgba(53, 207, 255, 0.1);
+  padding: clamp(16px, 3.2vw, 24px);
 }
 
 body.year-2026 .web-title {
-  background: linear-gradient(90deg, #315cff, #8b4dff);
+  background: linear-gradient(90deg, #7d5cff 0%, #5c35ff 50%, #35cfff 100%);
+  color: #f0f0ff;
+  border: 1px solid #8b5cff60;
+  border-radius: clamp(12px, 2.5vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 12px 16px;
+  font-size: clamp(11px, 2.1vw, 13px);
+  box-shadow: 0 4px 16px rgba(139, 92, 255, 0.3),
+              0 0 20px rgba(53, 207, 255, 0.2);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+body.year-2026 .links {
+  color: #35cfff;
+  text-shadow: 0 0 8px rgba(53, 207, 255, 0.3);
+  font-size: clamp(10px, 2.1vw, 12px);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+body.year-2026 .links:hover {
+  color: #7d5cff;
+  text-shadow: 0 0 12px rgba(125, 92, 255, 0.5);
+  filter: brightness(1.2);
+}
+
+body.year-2026 .counter {
+  color: #8b5cff;
+  font-size: clamp(9px, 1.9vw, 10px);
+}
+
+/* ========================================
+   SEARCH BOX STYLES
+   ======================================== */
+
+.search-box {
+  display: flex;
+  gap: clamp(4px, 1vw, 8px);
+  margin-bottom: clamp(12px, 2.5vw, 18px);
+  width: 100%;
+}
+
+.search-input {
+  flex: 1;
+  padding: clamp(6px, 1.5vw, 10px);
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: clamp(9px, 1.8vw, 11px);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  outline: 1px solid currentColor;
+  box-shadow: 0 0 4px currentColor;
+}
+
+.search-button {
+  padding: clamp(6px, 1.5vw, 10px) clamp(10px, 2vw, 14px);
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: clamp(8px, 1.7vw, 10px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.search-button:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.search-button:active {
+  transform: scale(0.95);
+}
+
+.search-results {
+  width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: clamp(8px, 2vw, 12px);
+}
+
+.search-loading,
+.search-error,
+.no-results {
+  padding: clamp(10px, 2vw, 15px);
+  text-align: center;
+  font-size: clamp(9px, 1.8vw, 11px);
+  border: 1px solid currentColor;
+}
+
+.results-list {
+  border: 1px solid currentColor;
+  padding: clamp(8px, 1.5vw, 12px);
+}
+
+.result-item {
+  padding: clamp(8px, 1.5vw, 12px);
+  border-bottom: 1px solid currentColor;
+  margin-bottom: clamp(6px, 1vw, 10px);
+}
+
+.result-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.result-title {
+  margin: 0 0 clamp(4px, 0.8vw, 6px);
+  font-size: clamp(9px, 1.9vw, 11px);
+  font-weight: bold;
+}
+
+.result-url {
+  margin: 0 0 clamp(3px, 0.6vw, 4px);
+  font-size: clamp(8px, 1.6vw, 9px);
+  opacity: 0.7;
+}
+
+.result-snippet {
+  margin: 0;
+  font-size: clamp(8px, 1.6vw, 9px);
+  line-height: 1.4;
+}
+
+/* ========================================
+   YEAR-SPECIFIC SEARCH STYLING
+   ======================================== */
+
+/* 1995 - Basic terminal search */
+body.year-1995 .search-box {
+  gap: 2px;
+}
+
+body.year-1995 .search-input,
+body.year-1995 .search-button {
+  border: 1px dashed #00ff00;
+  color: #00ff00;
+  background: #000;
+}
+
+body.year-1995 .search-input::placeholder {
+  color: #00ff00;
+  opacity: 0.5;
+}
+
+body.year-1995 .search-button:hover {
+  background: #001000;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+/* 2000 - Colorful portal search */
+body.year-2000 .search-input,
+body.year-2000 .search-button {
+  border: 1px solid #ffcc00;
+  color: #ffffff;
+  background: #003366;
+}
+
+body.year-2000 .search-input::placeholder {
+  color: #cccccc;
+  opacity: 0.6;
+}
+
+body.year-2000 .search-button {
+  background: #ffcc00;
+  color: #003366;
+  font-weight: bold;
+}
+
+body.year-2000 .search-button:hover {
+  background: #ffdd44;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 2005 - Glossy Web 2.0 search */
+body.year-2005 .search-input {
+  border: 1px solid #7db8e8;
+  background: rgba(255, 255, 255, 0.8);
+  color: #1a5a9c;
+  border-radius: clamp(8px, 1.5vw, 10px);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+body.year-2005 .search-input::placeholder {
+  color: #1a5a9c;
+  opacity: 0.4;
+}
+
+body.year-2005 .search-button {
+  background: linear-gradient(135deg, #5db3ff, #2b7dcc);
+  color: white;
+  border: 1px solid #2b7dcc;
+  border-radius: clamp(8px, 1.5vw, 10px);
+  box-shadow: 0 2px 8px rgba(43, 125, 204, 0.2);
+  font-weight: bold;
+}
+
+body.year-2005 .search-button:hover {
+  box-shadow: 0 4px 12px rgba(43, 125, 204, 0.4);
+}
+
+/* 2010 - Modern flat search */
+body.year-2010 .search-input {
+  border: 1px solid #cccccc;
+  background: #ffffff;
+  color: #333333;
+  border-radius: 4px;
+}
+
+body.year-2010 .search-input::placeholder {
+  color: #999999;
+  opacity: 0.7;
+}
+
+body.year-2010 .search-button {
+  background: #3b5998;
+  color: white;
+  border: 1px solid #3b5998;
+  border-radius: 4px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(59, 89, 152, 0.15);
+}
+
+body.year-2010 .search-button:hover {
+  background: #2d4373;
+}
+
+/* 2015 - Minimal flat search */
+body.year-2015 .search-input {
+  border: 1px solid #dddddd;
+  background: #ffffff;
+  color: #2c3e50;
+  border-radius: 2px;
+  padding: clamp(8px, 1.5vw, 12px);
+}
+
+body.year-2015 .search-input::placeholder {
+  color: #999999;
+  opacity: 0.6;
+}
+
+body.year-2015 .search-button {
+  background: #34495e;
   color: #ffffff;
   border: none;
-  border-radius: 9px;
-  box-shadow: 0 0 15px #5b5cff44;
+  border-radius: 2px;
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
-body.year-2026 .link {
-  color: #65d9ff;
-  text-decoration: none;
+body.year-2015 .search-button:hover {
+  background: #2c3e50;
 }
 
-body.year-2026 .link:hover {
-  color: #ffffff;
-  text-shadow:
-    0 0 6px #65d9ff,
-    0 0 15px #65d9ff66;
+/* 2020 - Dark mode search */
+body.year-2020 .search-input {
+  border: 1px solid #444444;
+  background: #252525;
+  color: #e8e8e8;
+  border-radius: 6px;
+}
+
+body.year-2020 .search-input::placeholder {
+  color: #888888;
+  opacity: 0.6;
+}
+
+body.year-2020 .search-button {
+  background: linear-gradient(135deg, #3a3a3a, #2a2a2a);
+  color: #61dafb;
+  border: 1px solid #444444;
+  border-radius: 6px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.year-2020 .search-button:hover {
+  background: linear-gradient(135deg, #444444, #333333);
+  box-shadow: 0 4px 12px rgba(97, 218, 251, 0.15);
+}
+
+/* 2026 - Advanced AI search with glass morphism */
+body.year-2026 .search-input {
+  border: 1.5px solid #8b5cff40;
+  background: linear-gradient(135deg, #2d1b5a15, #1a0d3a10);
+  color: #e0d5ff;
+  border-radius: clamp(12px, 2.5vw, 14px);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 1px 2px rgba(139, 92, 255, 0.1),
+              0 0 10px rgba(53, 207, 255, 0.05);
+}
+
+body.year-2026 .search-input::placeholder {
+  color: #a89ccc;
+  opacity: 0.6;
+}
+
+body.year-2026 .search-input:focus {
+  background: linear-gradient(135deg, #3d2b6a25, #2a1d4a15);
+  border-color: #8b5cff60;
+  box-shadow: inset 0 1px 2px rgba(139, 92, 255, 0.2),
+              0 0 15px rgba(53, 207, 255, 0.15);
+}
+
+body.year-2026 .search-button {
+  background: linear-gradient(90deg, #7d5cff 0%, #5c35ff 50%, #35cfff 100%);
+  color: #f0f0ff;
+  border: 1px solid #8b5cff60;
+  border-radius: clamp(12px, 2.5vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 16px rgba(139, 92, 255, 0.3),
+              0 0 20px rgba(53, 207, 255, 0.2);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+body.year-2026 .search-button:hover {
+  background: linear-gradient(90deg, #8b6dff 0%, #6d46ff 50%, #46e0ff 100%);
+  box-shadow: 0 6px 24px rgba(139, 92, 255, 0.4),
+              0 0 30px rgba(53, 207, 255, 0.3);
+  filter: brightness(1.1);
+}
+
+/* 2026 - Results styling */
+body.year-2026 .search-results {
+  background: linear-gradient(135deg, #1a0d3a20, #2d1b5a15);
+  border: 1px solid #8b5cff40;
+  border-radius: clamp(12px, 2.5vw, 14px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(139, 92, 255, 0.15);
+}
+
+/* ========================================
+   POWER OFF STATE
+   ======================================== */
+
+body.power-off .screen {
+  background: #000;
+}
+
+body.power-off .year-content {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.power-off .power-led {
+  background: #333;
+  box-shadow: none;
+}
+
+/* ========================================
+   MOBILE OPTIMIZATIONS
+   ======================================== */
+
+@media (max-width: 768px) {
+  header {
+    padding: clamp(30px, 6vw, 50px) 0 clamp(20px, 4vw, 30px);
+  }
+
+  .year-selector {
+    padding: clamp(15px, 3vw, 22px);
+  }
+
+  .time-counter {
+    gap: clamp(6px, 2vw, 12px);
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .selector-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .range-label {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    letter-spacing: -1px;
+  }
+
+  .year-buttons {
+    justify-content: center;
+  }
+
+  .monitor-inner {
+    border-width: clamp(6px, 1.5vw, 8px);
+  }
+
+  .year-content {
+    font-size: clamp(9px, 1.8vw, 11px);
+  }
+
+  .website-window p {
+    font-size: clamp(8px, 1.5vw, 10px);
+  }
+
+  .time-hint {
+    font-size: clamp(8px, 1.5vw, 9px);
+  }
+
+  .info-section {
+    padding: clamp(12px, 3vw, 20px);
+  }
+
+  .info-card {
+    padding: clamp(12px, 2.5vw, 18px);
+  }
+}
+
+/* ========================================
+   TABLET OPTIMIZATIONS
+   ======================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .monitor {
+    aspect-ratio: auto;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  section {
+    width: min(900px, 88vw);
+  }
+}
+
+
+:root {
+  --paper: #eee8dc;
+  --paper-dark: #e2d8c8;
+  --ink: #1b2f3d;
+  --muted-ink: #6b716f;
+  --red: #c24d37;
+  --yellow: #e4b84f;
+}
+
+html { background: var(--paper); }
+body {
+  background-color: var(--paper);
+  background-image: radial-gradient(#b7a890 0.7px, transparent 0.7px), linear-gradient(90deg, transparent 49.8%, #d9d0c3 50%, transparent 50.2%);
+  background-size: 7px 7px, 100% 100%;
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+}
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .18; background: repeating-linear-gradient(0deg, transparent 0 3px, #fff 4px); mix-blend-mode: screen; }
+header, section, footer { width: min(920px, 88vw); }
+header { text-align: left; padding: clamp(52px, 9vw, 100px) 0 58px; }
+.top-label, .section-kicker, .range-label, .time-arrow small, .time-hint, .travel-heading span, footer { font-family: 'Courier New', monospace; }
+.top-label { color: var(--red); font-size: 11px; letter-spacing: 1.5px; text-shadow: none; transform: rotate(-1deg); transform-origin: left; }
+header h1 { max-width: 650px; margin: 8px 0 18px; color: var(--ink); font-family: Georgia, serif; font-size: clamp(48px, 9vw, 94px); font-weight: 700; letter-spacing: -5px; line-height: .86; }
+header h1 em { color: var(--red); font-weight: 400; }
+header p { max-width: 510px; margin: 0; color: #56615f; font-size: clamp(16px, 2vw, 20px); line-height: 1.45; }
+section { margin-bottom: 70px; }
+section h2 { color: var(--ink); font-family: Georgia, serif; font-size: clamp(28px, 4vw, 42px); letter-spacing: -1.5px; }
+.year-selector { padding: 30px 34px 24px; border: 1px solid #c9bca9; border-radius: 3px; background: #f6f0e5; box-shadow: 5px 6px 0 #cfc2b0; }
+.section-kicker { color: var(--red); font-size: 10px; letter-spacing: 1.5px; }
+.range-label { border: 0; color: var(--muted-ink); font-size: 11px; }
+.year-wheel { border-color: #746e64; border-radius: 2px; background: #b8b0a1; box-shadow: inset 0 2px #f6f1e7, inset 0 -4px #777064, 3px 4px 0 #cbbfae; }
+.wheel-window { border-radius: 1px; background: #1c2827; }
+.digit { color: #e9c56c; text-shadow: 1px 1px 0 #806b38; }
+.time-arrow { border-radius: 2px; background: #d7cbbb; color: var(--ink); box-shadow: inset 0 2px #fff9, inset 0 -4px #8d8274, 3px 4px 0 #c4b6a4; }
+.time-arrow:hover:not(:disabled) { box-shadow: inset 0 2px #fff9, inset 0 -4px #8d8274, 4px 6px 0 #c4b6a4; transform: translate(-1px,-1px); }
+.time-hint { color: #79746c; }
+.time-machine { position: relative; }
+.travel-heading { margin-bottom: 0; }
+.travel-heading span { color: var(--red); font-size: 10px; letter-spacing: 1px; }
+.year-display { color: var(--ink); font-family: Georgia, serif; }
+.computer-container { filter: drop-shadow(8px 10px 0 #c5b9a8); }
+.monitor { border-radius: 9px 9px 17px 17px; background: #c7c1b3; box-shadow: 0 0 0 1px #8e897e, inset 2px 2px 5px #fff8, inset -5px -5px 15px #0002; }
+.monitor-inner { background: #a8a297; box-shadow: 0 5px 0 #777269; }
+.screen-container { border-radius: 4px; }
+.screen { border-radius: 2px; }
+.monitor-bottom { right: 8%; }
+.power-button { background: #eee8dc; }
+.back-button { border: 1px solid #b9aa97; border-radius: 2px; background: transparent; color: var(--ink); box-shadow: 2px 2px 0 #cbbdab; }
+.back-button:hover { background: #e2d5c4; box-shadow: 3px 3px 0 #b9aa97; }
+.info-section { padding: 28px 0 0; border-top: 2px solid #b9aa97; }
+.info-card { border: 0; border-left: 5px solid var(--yellow); border-radius: 0; padding: 4px 24px 10px; background: transparent; box-shadow: none; }
+.info-card h3 { color: var(--ink); font-family: Georgia, serif; font-size: 26px; }
+.info-card p { color: #59625f; }
+.info-grid { border-top: 1px solid #cbbfae; }
+.info-grid strong { color: var(--red); font-family: 'Courier New', monospace; font-size: 10px; }
+.info-grid span { color: var(--ink); }
+footer { color: #7b786f; border-top: 1px solid #cbbfae; }
+footer p:first-child { color: var(--red); }
+footer span { color: #7b786f; }
+
+@media (max-width: 600px) {
+  header { padding-top: 42px; }
+  header h1 { letter-spacing: -3px; }
+  .year-selector { padding: 22px 18px; }
+  .selector-heading { align-items: flex-start; }
+  .info-card { padding-left: 17px; }
 }
