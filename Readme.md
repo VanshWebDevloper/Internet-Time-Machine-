@@ -28,8 +28,7 @@ Time Machine/
 
 ---time-control.js
 
-
-⭐ If you like the idea, consider giving the project a vote to help me get 20x multiplier for  a laptop for better coding !
+⭐ 
 
 --Updates--
 
